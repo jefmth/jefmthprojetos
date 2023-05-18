@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        #output {
+            font-size: 28px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <br>
+    <h2 style="text-align: center;">Cálculo de folgas 6X2</h2>
+
+    <div class="form-group" style="text-align: center;">
+        <label for="date">Digite uma data:</label>
+        <input type="date" id="date" class="form-controls">
+    </div>
+
+    <button class="btn btn-primary" style="display: block; margin: 0 auto;" onclick="verificarData()">Verificar Data</button>
+
+    <p id="output" class="mt-3"></p>
+</div>
+
+<script>
+    function verificarData() {
+        var date = document.getElementById("date").valueAsDate;
+
+        var sextoDia = new Date(date);
+        sextoDia.setUTCDate(sextoDia.getUTCDate() + 7);
+        var sextoDiaStr = sextoDia.getUTCDate() + "/" + (sextoDia.getUTCMonth() + 1);
+
+        var sétimoDia = new Date(date);
+        sétimoDia.setUTCDate(sétimoDia.getUTCDate() + 8);
+        var sétimoDiaStr = sétimoDia.getUTCDate() + "/" + (sétimoDia.getUTCMonth() + 1);
+
+        var décimoQuintoDia = new Date(date);
+        décimoQuintoDia.setUTCDate(décimoQuintoDia.getUTCDate() + 15);
+        var décimoQuintoDiaStr = décimoQuintoDia.getUTCDate() + "/" + (décimoQuintoDia.getUTCMonth() + 1);
+
+        var décimoSextoDia = new Date(date);
+        décimoSextoDia.setUTCDate(décimoSextoDia.getUTCDate() + 16);
+        var décimoSextoDiaStr = décimoSextoDia.getUTCDate() + "/" + (décimoSextoDia.getUTCMonth() + 1);
+
+        var vigésimoTerceiroDia = new Date(date);
+        vigésimoTerceiroDia.setUTCDate(vigésimoTerceiroDia.getUTCDate() + 23);
+        var vigésimoTerceiroDiaStr = vigésimoTerceiroDia.getUTCDate() + "/" + (vigésimoTerceiroDia.getUTCMonth() + 1);
+
+        var vigésimoQuartoDia = new Date(date);
+        vigésimoQuartoDia.setUTCDate(vigésimoQuartoDia.getUTCDate() + 24);
+        var vigésimoQuartoDiaStr = vigésimoQuartoDia.getUTCDate() + "/" + (vigésimoQuartoDia.getUTCMonth() + 1);
+
+        var trigésimoPrimeiroDia = new Date(date);
+        trigésimoPrimeiroDia.setUTCDate(trigésimoPrimeiroDia.getUTCDate() + 31);
+        var trigésimoPrimeiroDiaStr = trigésimoPrimeiroDia.getUTCDate() + "/" + (trigésimoPrimeiroDia.getUTCMonth() + 1);
+
+        var trigésimoSegundoDia = new Date(date);
+        trigésimoSegundoDia.setUTCDate(trigésimoSegundoDia.getUTCDate() + 32);
+        var trigésimoSegundoDiaStr = trigésimoSegundoDia.getUTCDate() + "/" + (trigésimoSegundoDia.getUTCMonth() + 1);
+
+        var trigésimoNonoDia = new Date(date);
+        trigésimoNonoDia.setUTCDate(trigésimoNonoDia.getUTCDate() + 39);
+        var trigésimoNonoDiaStr = trigésimoNonoDia.getUTCDate() + "/" + (trigésimoNonoDia.getUTCMonth() + 1);
+
+        var quadragésimoDia = new Date(date);
+        quadragésimoDia.setUTCDate(quadragésimoDia.getUTCDate() + 40);
+        var quadragésimoDiaStr = quadragésimoDia.getUTCDate() + "/" + (quadragésimoDia.getUTCMonth() + 1);
+
+        var quadragésimoSétimoDia = new Date(date);
+        quadragésimoSétimoDia.setUTCDate(quadragésimoSétimoDia.getUTCDate() + 47);
+        var quadragésimoSétimoDiaStr = quadragésimoSétimoDia.getUTCDate() + "/" + (quadragésimoSétimoDia.getUTCMonth() + 1);
+
+        var quadragésimoOitavoDia = new Date(date);
+        quadragésimoOitavoDia.setUTCDate(quadragésimoOitavoDia.getUTCDate() + 48);
+        var quadragésimoOitavoDiaStr = quadragésimoOitavoDia.getUTCDate() + "/" + (quadragésimoOitavoDia.getUTCMonth() + 1);
+		
+		var quinquagésimoQuintoDia = new Date(date);
+        quinquagésimoQuintoDia.setUTCDate(quinquagésimoQuintoDia.getUTCDate() + 55);
+        var quinquagésimoQuintoDiaStr = quinquagésimoQuintoDia.getUTCDate() + "/" + (quinquagésimoQuintoDia.getUTCMonth() + 1);
+		
+		var quinquagésimoSextoDia = new Date(date);
+        quinquagésimoSextoDia.setUTCDate(quinquagésimoSextoDia.getUTCDate() + 56);
+        var quinquagésimoSextoDiaStr = quinquagésimoSextoDia.getUTCDate() + "/" + (quinquagésimoSextoDia.getUTCMonth() + 1);
+		
+		var sexagésimoTerceiroDia = new Date(date);
+        sexagésimoTerceiroDia.setUTCDate(sexagésimoTerceiroDia.getUTCDate() + 63);
+        var sexagésimoTerceiroDiaStr = sexagésimoTerceiroDia.getUTCDate() + "/" + (sexagésimoTerceiroDia.getUTCMonth() + 1);
+
+        document.getElementById("output").innerHTML = "Você está de Folga:<br>" +
+            sextoDiaStr +
+            " -- " +
+            sétimoDiaStr +
+            " -- " +
+            décimoQuintoDiaStr +
+            "<br>" +
+            décimoSextoDiaStr +
+            " -- " +
+            vigésimoTerceiroDiaStr +
+            " -- " +
+            vigésimoQuartoDiaStr +
+            "<br>" +
+            trigésimoPrimeiroDiaStr +
+            " -- " +
+            trigésimoSegundoDiaStr +
+            " -- " +
+            trigésimoNonoDiaStr +
+            "<br>" +
+            quadragésimoDiaStr +
+            " -- " +
+            quadragésimoSétimoDiaStr +
+            " -- " +
+            quadragésimoOitavoDiaStr +
+			"<br>" +
+			quinquagésimoQuintoDiaStr +
+			" -- " +
+			quinquagésimoSextoDiaStr +
+			" -- " +
+			sexagésimoTerceiroDiaStr;
+			
+    }
+</script>
+
+</body>
+</html>
