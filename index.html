@@ -5,16 +5,46 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <style>
         .column {
-            float: left;
             width: 33.33%;
+            display: inline-block;
+            vertical-align: top;
         }
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
+		#Calcular{
+		text-align: center;
+		}
         .container {
+            text-align: left;
+        }
+        .calendar {
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+        }
+        .calendar-header {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .calendar-month {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .calendar-week {
+            display: flex;
+        }
+        .calendar-day {
+            width: calc(100% / 7);
+            height: 25px;
+            line-height: 25px;
             text-align: center;
+            display: inline-block;
+            margin: 2px;
+            border: 1px solid #ccc;
+        }
+        .active {
+            background-color: #f0f0f0;
+        }
+        .calendar-days:last-child .calendar-day {
+            margin-right: auto;
         }
     </style>
 </head>
@@ -23,19 +53,11 @@
         <h1>Cálculo de Folgas 6X2</h1>
         <p>Digite a data da Última Folga</p>
         <input type="date" id="start-date" class="form-control"> <p></p>
+		<div id="Calcular">
         <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
         <p>Você está de Folga:</p>
-        <div class="row">
-            <div class="column">
-                <ul id="days-off-1" class="list-group"></ul>
-            </div>
-            <div class="column">
-                <ul id="days-off-2" class="list-group"></ul>
-            </div>
-            <div class="column">
-                <ul id="days-off-3" class="list-group"></ul>
-            </div>
-        </div>
+		</div>
+        <div id="days-off-container" class="row"></div>
 
         <script>
             function calculateDaysOff() {
@@ -51,27 +73,79 @@
                     currentDate.setDate(currentDate.getDate() + 7);
                 }
 
-                const daysOffList1 = document.getElementById("days-off-1");
-                const daysOffList2 = document.getElementById("days-off-2");
-                const daysOffList3 = document.getElementById("days-off-3");
-                daysOffList1.innerHTML = "";
-                daysOffList2.innerHTML = "";
-                daysOffList3.innerHTML = "";
-                
-                for (let i = 0; i < daysOff.length; i++) {
-                    const dayOff = daysOff[i];
-                    const listItem = document.createElement("li");
-                    listItem.textContent = dayOff.toLocaleDateString('pt-BR');
-                    listItem.classList.add("list-group-item");
-                    
-                    if (i % 3 === 0) {
-                        daysOffList1.appendChild(listItem);
-                    } else if (i % 3 === 1) {
-                        daysOffList2.appendChild(listItem);
-                    } else {
-                        daysOffList3.appendChild(listItem);
+                const daysOffContainer = document.getElementById("days-off-container");
+                daysOffContainer.innerHTML = "";
+
+                const calendars = createCalendars(daysOff);
+
+                calendars.forEach((calendar) => {
+                    const column = document.createElement("div");
+                    column.classList.add("column");
+                    column.appendChild(calendar);
+                    daysOffContainer.appendChild(column);
+                });
+            }
+
+            function createCalendars(daysOff) {
+                const calendars = [];
+                let currentMonth = -1;
+                let calendar;
+
+                daysOff.forEach((dayOff) => {
+                    const day = dayOff.getDate();
+                    const month = dayOff.getMonth();
+
+                    if (month !== currentMonth) {
+                        if (calendar) {
+                            calendars.push(calendar);
+                        }
+                        calendar = createCalendar(dayOff.toLocaleString('pt-BR', { month: 'long' }), dayOff.getMonth());
+                        currentMonth = month;
                     }
+
+                    const calendarDays = calendar.getElementsByClassName("calendar-day");
+                    calendarDays[day - 1].classList.add("active");
+                    calendarDays[day - 1].setAttribute("data-total-days", getDaysInMonth(month, dayOff.getFullYear()));
+                });
+
+                calendars.push(calendar);
+
+                return calendars;
+            }
+
+            function createCalendar(monthName, monthIndex) {
+                const calendar = document.createElement("div");
+                calendar.classList.add("calendar");
+                
+                const header = document.createElement("div");
+                header.classList.add("calendar-header");
+                header.textContent = "";
+                calendar.appendChild(header);
+
+                const month = document.createElement("div");
+                month.classList.add("calendar-month");
+                month.textContent = monthName;
+                calendar.appendChild(month);
+                
+                const days = document.createElement("div");
+                days.classList.add("calendar-days");
+                calendar.appendChild(days);
+                
+                const currentYear = new Date().getFullYear();
+                const lastDayOfMonth = new Date(currentYear, monthIndex + 1, 0).getDate();
+                
+                for (let i = 1; i <= lastDayOfMonth; i++) {
+                    const day = document.createElement("div");
+                    day.classList.add("calendar-day");
+                    day.textContent = i;
+                    days.appendChild(day);
                 }
+                
+                return calendar;
+            }
+			
+			function getDaysInMonth(month, year) {
+                return new Date(year, month + 1, 0).getDate();
             }
         </script>
     </div>
