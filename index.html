@@ -3,16 +3,21 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+	
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 80%;
         }
         th, td {
             text-align: center;
-            padding: 8px;
+            padding: 4px;
+            font-size: 14px;
         }
         tr:nth-child(even) {
             background-color: #f2f2f2;
+        }
+		.container{
+            text-align: center;
         }
     </style>
 </head>
@@ -23,9 +28,9 @@
         <input type="date" id="start-date" class="form-control"> <p></p>
 		<div id="Calcular">
             <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
+			<p></p>
+		 <p>Você está de Folga:</p>
 		</div>
-
-        <h2>Calendário Anual</h2>
         <table id="calendar" class="table"></table>
     </div>
 
@@ -34,7 +39,7 @@
             const startDate = new Date(document.getElementById("start-date").value);
             const daysOff = [];
             let currentDate = new Date(startDate.getTime());
-            currentDate.setDate(currentDate.getDate() + 8);
+            currentDate.setDate(currentDate.getDate() + 7);
 
             while (currentDate.getFullYear() === startDate.getFullYear() && currentDate.getMonth() <= 11) {
                 daysOff.push(new Date(currentDate.getTime()));
