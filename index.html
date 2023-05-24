@@ -5,10 +5,8 @@
     <style>
 	
         table {
-		position: relative; left: 2px;
             border-collapse: collapse;
-            width: 70%;
-			text-align: center;
+            width: 50%;
 			
         }
         th, td {
@@ -20,23 +18,14 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-		
 		.container{
-		position: relative; left: 2px;
             text-align: center;
-			 width: 50%;
-        }
-		.corpo{
-		position: absolute; left: -170px;
-		width: 50%;
-          
         }
     </style>
 </head>
 <body>
- <div class="corpo">
     <div class="container">
-        <h2>Cálculo de Folgas 6X2</h2>
+        <h1>Cálculo de Folgas 6X2</h1>
         <p>Digite a data da Última Folga</p>
         <input type="date" id="start-date" class="form-control"> <p></p>
 		<div id="Calcular">
@@ -46,7 +35,7 @@
 		</div>
         <table id="calendar" class="table"></table>
     </div>
-</div>
+
     <script>
         function calculateDaysOff() {
             const startDate = new Date(document.getElementById("start-date").value);
