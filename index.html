@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
+	
         table {
             border-collapse: collapse;
-            width: 100%;
+            width: 50%;
+			
         }
         th, td {
+			
             text-align: center;
             padding: 4px;
             font-size: 14px;
@@ -16,7 +18,7 @@
         tr:nth-child(even) {
             background-color: #f2f2f2;
         }
-        .container {
+		.container{
             text-align: center;
         }
     </style>
@@ -25,18 +27,13 @@
     <div class="container">
         <h1>Cálculo de Folgas 6X2</h1>
         <p>Digite a data da Última Folga</p>
-        <div class="form-group">
-            <input type="date" id="start-date" class="form-control">
-        </div>
-        <div id="Calcular" class="form-group">
+        <input type="date" id="start-date" class="form-control"> <p></p>
+		<div id="Calcular">
             <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
-        </div>
-        <div>
-            <p>Você está de Folga:</p>
-        </div>
-        <div class="table-responsive">
-            <table id="calendar" class="table"></table>
-        </div>
+			<p></p>
+		 <p>Você está de Folga:</p>
+		</div>
+        <table id="calendar" class="table"></table>
     </div>
 
     <script>
@@ -95,13 +92,13 @@
                 calendarHTML += `<td>${days[j]}</td>`;
             }
             calendarHTML += "</tr><tr data-month=\"" + i + "\">";
-
+            
             // Add empty cells at the beginning of the month
             const firstDayOfMonth = new Date(new Date().getFullYear(), i, 1).getDay();
             for (let j = 0; j < firstDayOfMonth; j++) {
                 calendarHTML += "<td></td>";
             }
-
+            
             for (let j = 1; j <= daysInMonth[i]; j++) {
                 const date = new Date(new Date().getFullYear(), i, j);
                 calendarHTML += `<td data-date="${date.toISOString().slice(0, 10)}">${j}</td>`;
@@ -109,17 +106,16 @@
                     calendarHTML += "</tr><tr data-month=\"" + i + "\">";
                 }
             }
-
+            
             // Add empty cells at the end of the month
             const lastDayOfMonth = new Date(new Date().getFullYear(), i + 1, 0).getDay();
             for (let j = lastDayOfMonth + 1; j < days.length; j++) {
                 calendarHTML += "<td></td>";
             }
-
+            
             calendarHTML += "</tr>";
         }
         document.getElementById("calendar").innerHTML = calendarHTML;
     </script>
 </body>
 </html>
-
