@@ -1,50 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cálculo de Folgas 6X2</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-        .column {
-            width: 50%;
-            display: inline-block;
-            vertical-align: top;
+        table {
+            border-collapse: collapse;
+            width: 100%;
         }
-		#Calcular{
-		text-align: center;
-		}
-        .container {
-            text-align: left;
-        }
-        .calendar {
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            padding: 10px;
-        }
-        .calendar-header {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .calendar-month {
-            font-weight: bold;
-            margin-bottom: 5px;
-        }
-        .calendar-week {
-            display: flex;
-        }
-        .calendar-day {
-            width: calc(100% / 8);
-            height: 25px;
-            line-height: 25px;
+        th, td {
             text-align: center;
-            display: inline-block;
-            margin: 2px;
-            border: 1px solid #ccc;
+            padding: 8px;
         }
-        .active {
-            background-color: #00FFFF;
-        }
-        .calendar-days:last-child .calendar-day {
-            margin-right: auto;
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -54,101 +22,94 @@
         <p>Digite a data da Última Folga</p>
         <input type="date" id="start-date" class="form-control"> <p></p>
 		<div id="Calcular">
-        <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
-        <p>Você está de Folga:</p>
+            <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
 		</div>
-        <div id="days-off-container" class="row"></div>
 
-        <script>
-            function calculateDaysOff() {
-                const startDate = new Date(document.getElementById("start-date").value);
-                const daysOff = [];
-                let currentDate = new Date(startDate.getTime());
-                currentDate.setDate(currentDate.getDate() + 8);
-
-                while (currentDate.getFullYear() === startDate.getFullYear() && currentDate.getMonth() <= 11) {
-                    daysOff.push(new Date(currentDate.getTime()));
-                    currentDate.setDate(currentDate.getDate() + 1);
-                    daysOff.push(new Date(currentDate.getTime()));
-                    currentDate.setDate(currentDate.getDate() + 7);
-                }
-
-                const daysOffContainer = document.getElementById("days-off-container");
-                daysOffContainer.innerHTML = "";
-
-                const calendars = createCalendars(daysOff);
-
-                calendars.forEach((calendar) => {
-                    const column = document.createElement("div");
-                    column.classList.add("column");
-                    column.appendChild(calendar);
-                    daysOffContainer.appendChild(column);
-                });
-            }
-
-            function createCalendars(daysOff) {
-                const calendars = [];
-                let currentMonth = -1;
-                let calendar;
-
-                daysOff.forEach((dayOff) => {
-                    const day = dayOff.getDate();
-                    const month = dayOff.getMonth();
-
-                    if (month !== currentMonth) {
-                        if (calendar) {
-                            calendars.push(calendar);
-                        }
-                        calendar = createCalendar(dayOff.toLocaleString('pt-BR', { month: 'long' }), dayOff.getMonth());
-                        currentMonth = month;
-                    }
-
-                    const calendarDays = calendar.getElementsByClassName("calendar-day");
-                    calendarDays[day - 1].classList.add("active");
-                    calendarDays[day - 1].setAttribute("data-total-days", getDaysInMonth(month, dayOff.getFullYear()));
-                });
-
-                calendars.push(calendar);
-
-                return calendars;
-            }
-
-            function createCalendar(monthName, monthIndex) {
-                const calendar = document.createElement("div");
-                calendar.classList.add("calendar");
-                
-                const header = document.createElement("div");
-                header.classList.add("calendar-header");
-                header.textContent = "";
-                calendar.appendChild(header);
-
-                const month = document.createElement("div");
-                month.classList.add("calendar-month");
-                month.textContent = monthName;
-                calendar.appendChild(month);
-                
-                const days = document.createElement("div");
-                days.classList.add("calendar-days");
-                calendar.appendChild(days);
-                
-                const currentYear = new Date().getFullYear();
-                const lastDayOfMonth = new Date(currentYear, monthIndex + 1, 0).getDate();
-                
-                for (let i = 1; i <= lastDayOfMonth; i++) {
-                    const day = document.createElement("div");
-                    day.classList.add("calendar-day");
-                    day.textContent = i;
-                    days.appendChild(day);
-                }
-                
-                return calendar;
-            }
-			
-			function getDaysInMonth(month, year) {
-                return new Date(year, month + 1, 0).getDate();
-            }
-        </script>
+        <h2>Calendário Anual</h2>
+        <table id="calendar" class="table"></table>
     </div>
+
+    <script>
+        function calculateDaysOff() {
+            const startDate = new Date(document.getElementById("start-date").value);
+            const daysOff = [];
+            let currentDate = new Date(startDate.getTime());
+            currentDate.setDate(currentDate.getDate() + 8);
+
+            while (currentDate.getFullYear() === startDate.getFullYear() && currentDate.getMonth() <= 11) {
+                daysOff.push(new Date(currentDate.getTime()));
+                currentDate.setDate(currentDate.getDate() + 1);
+                daysOff.push(new Date(currentDate.getTime()));
+                currentDate.setDate(currentDate.getDate() + 7);
+            }
+
+            for (let i = 0; i < daysOff.length; i++) {
+                const dayOffCell = document.querySelector(`#calendar td[data-date="${daysOff[i].toISOString().slice(0, 10)}"]`);
+                if (dayOffCell) {
+                    dayOffCell.style.backgroundColor = "#00FFFF";
+                }
+            }
+
+            const monthsWithDaysOff = [...new Set(daysOff.map(date => date.getMonth()))];
+            for (let i = 0; i < months.length; i++) {
+                if (!monthsWithDaysOff.includes(i)) {
+                    const monthRows = document.querySelectorAll(`#calendar tr[data-month="${i}"]`);
+                    monthRows.forEach(row => row.style.display = "none");
+                }
+            }
+
+            const calculateButton = document.querySelector("#Calcular button");
+            calculateButton.textContent = "Recalcular";
+            calculateButton.onclick = function() {
+                resetCalendar();
+                calculateDaysOff();
+            };
+        }
+
+        function resetCalendar() {
+            const dayOffCells = document.querySelectorAll(`#calendar td[data-date]`);
+            dayOffCells.forEach(cell => cell.style.backgroundColor = "");
+
+            const monthRows = document.querySelectorAll(`#calendar tr[data-month]`);
+            monthRows.forEach(row => row.style.display = "");
+        }
+
+        const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        const days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+        const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+        let calendarHTML = "";
+        for (let i = 0; i < months.length; i++) {
+            calendarHTML += `<tr data-month="${i}"><th colspan="7">${months[i]}</th></tr>`;
+            calendarHTML += `<tr data-month="${i}">`;
+            for (let j = 0; j < days.length; j++) {
+                calendarHTML += `<td>${days[j]}</td>`;
+            }
+            calendarHTML += "</tr><tr data-month=\"" + i + "\">";
+            
+            // Add empty cells at the beginning of the month
+            const firstDayOfMonth = new Date(new Date().getFullYear(), i, 1).getDay();
+            for (let j = 0; j < firstDayOfMonth; j++) {
+                calendarHTML += "<td></td>";
+            }
+            
+            for (let j = 1; j <= daysInMonth[i]; j++) {
+                const date = new Date(new Date().getFullYear(), i, j);
+                calendarHTML += `<td data-date="${date.toISOString().slice(0, 10)}">${j}</td>`;
+                if ((j + firstDayOfMonth) % 7 === 0) {
+                    calendarHTML += "</tr><tr data-month=\"" + i + "\">";
+                }
+            }
+            
+            // Add empty cells at the end of the month
+            const lastDayOfMonth = new Date(new Date().getFullYear(), i + 1, 0).getDay();
+            for (let j = lastDayOfMonth + 1; j < days.length; j++) {
+                calendarHTML += "<td></td>";
+            }
+            
+            calendarHTML += "</tr>";
+        }
+        document.getElementById("calendar").innerHTML = calendarHTML;
+    </script>
 </body>
 </html>
 
