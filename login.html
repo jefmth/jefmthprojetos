@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    .card {
+      margin: 0 auto;
+      max-width: 400px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container mt-5">
+    <div class="card p-4">
+      <h2 class="text-center mb-4">Login</h2>
+      <form>
+        <div class="form-group">
+          <label for="username">Usuário:</label>
+          <input type="text" class="form-control" id="username" placeholder="Digite o nome de usuário" required>
+        </div>
+        <div class="form-group">
+          <label for="password">Senha:</label>
+          <input type="password" class="form-control" id="password" placeholder="Digite a senha" required>
+        </div>
+        <button type="button" class="btn btn-primary btn-block" onclick="login()">Entrar</button>
+        <button type="button" class="btn btn-secondary btn-block mt-3" onclick="voltar()">Voltar</button>
+      </form>
+    </div>
+  </div>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+function login() {
+    var username = document.getElementById("username").value;
+    var password = document.getElementById("password").value;
+
+    // Verificar usuário e senha
+    if (username === "mclove" && password === "4zero") {
+        // Salvar o nome de usuário no armazenamento local
+        localStorage.setItem("username", username);
+        
+        window.location.href = "galeria.html"; // Redirecionar para a página galeria.html
+    } else {
+        alert("Usuário ou senha inválidos. Por favor, tente novamente.");
+    }
+}
+
+function voltar() {
+    window.location.href = "index.html"; // Redirecionar para a página index.html
+}
+</script>
+
+</body>
+</html>
