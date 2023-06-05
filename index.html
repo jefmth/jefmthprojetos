@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QR App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+	/* css corpo */
+        .btn-lg {
+            width: 100%;
+            margin-bottom: 70px;/* espaçamento entre os botões */
+        }
+        .container {
+            text-align: center;
+        }
+	/* fim css corpo */
+	
+	/* inicio css player */
+		
+		 .wave-container {
+        position: relative;
+        width: 100%;
+        height: 50px;
+        overflow: hidden;
+		border-radius: 10px;
+      }
+      
+      .wave {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 200%;
+        height: 150px;
+        background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+        background-size: 400% 400%;
+      }
+      
+      .wave.playing {
+        animation: wave-animation 1s linear infinite;
+      }
+      
+      @keyframes wave-animation {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+      
+      #play-pause-btn {
+        position: absolute;
+        bottom: 3px;
+        left: 10px;
+        border: none;
+        background-color: transparent;
+        font-size: 24px;
+        cursor: pointer;
+      }
+      
+      #play-pause-btn .fa-play,
+      #play-pause-btn .fa-pause {
+        display: none;
+      }
+      
+      #play-pause-btn.paused .fa-play {
+        display: inline-block;
+      }
+      
+      #play-pause-btn:not(.paused) .fa-pause {
+        display: inline-block;
+      }
+	  
+	/* fim css player */
+    </style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MENU</h1>
+        <button class="btn btn-primary btn-lg" onclick="window.location.href='calendário.html'">Cálculo de Folgas 6X2</button>
+        <button class="btn btn-success btn-lg" onclick="window.location.href='galeria.html'">Verificação de Imagens</button>
+		<button class="btn btn-warning btn-lg" onclick="window.location.href='https://www.restituicao.receita.fazenda.gov.br/#/'">Consulta do IPR</button>
+	   
+		<!-- inicio do player -->
+		<P>O MELHOR DO POP ROCK NACIONAL ANOS 80 E 90</P>
+	   <div class="wave-container">
+      <audio controls loop playsinline id="som">
+	  <source src="https://drive.google.com/uc?export=download&id=1DG0Wosxsg1HpCdpGC_I1sEdprRy7pw_z" type="audio/mpeg">
+	  <!--<source src="./rock nacional.mp3" type="audio/mpeg">-->
+        <!--<source src="https://drive.google.com/uc?export=download&id=1KbJxg6EZg89_rFgNVzV1mj88EkoEHI4L" type="audio/mpeg"> -->
+        Seu navegador não suporta o elemento de áudio.
+      </audio>
+      <div class="wave"></div>
+      <button id="play-pause-btn">
+        <i class="fas fa-play"></i>
+        <i class="fas fa-pause"></i>
+      </button>
+    </div>
+	</div> 
+	<br>
+		<!-- fim do player -->
+		
+	
+	  <script> <!-- scrit do player -->
+         const audio = document.querySelector('#som');
+      const playPauseBtn = document.querySelector('#play-pause-btn');
+      const wave = document.querySelector('.wave');
+      
+      playPauseBtn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play();
+          playPauseBtn.classList.remove('paused');
+          wave.classList.add('playing');
+        } else {
+          audio.pause();
+          playPauseBtn.classList.add('paused');
+          wave.classList.remove('playing');
+        }
+      });
+    </script>
+</body>
+</html>
