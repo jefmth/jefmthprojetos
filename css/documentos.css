@@ -1,0 +1,13 @@
+/* css corpo */
+        .btn-lg {
+            width: 100%;
+            margin-bottom: 70px;/* espaçamento entre os botões */
+        }
+        .h3 {
+            text-align: center;
+        }
+	/* fonte google */
+		.corpo{
+			text-align: justify;
+			font-family: 'Roboto', sem serifa;}
+	/* fim css corpo */
