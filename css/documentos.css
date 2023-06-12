@@ -7,6 +7,9 @@
         .h3 {
             text-align: center;
         }
+		.span{
+			color: red;
+		}
 	/* fonte google */
 		.corpo{
 			text-align: justify;
