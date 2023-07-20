@@ -189,5 +189,49 @@ window.onbeforeunload = function() {
 						table.deleteRow(-1);
 					}
 				});
-				
+	//função verificar
+			window.addEventListener('load', function() {
+    verificar();
+});
+
+function verificar() {
+    let diaAtual = date.getDate();
+    let colunaDia = 0;
+    for (let i = 1; i < daysRow.cells.length; i++) {
+        if (daysRow.cells[i].innerHTML == diaAtual) {
+            colunaDia = i;
+            break;
+        }
+    }
+
+    let nomesVazios = [];
+    let nomesNaoVazios = [];
+    for (let i = 4; i < table.rows.length; i++) {
+        let celula = table.rows[i].cells[colunaDia];
+        let nome = table.rows[i].cells[0].innerHTML;
+        if (celula.innerHTML == "") {
+            nomesVazios.push(nome);
+        } else {
+            nomesNaoVazios.push(nome);
+        }
+    }
+
+    let resultadoTrabalhando = document.getElementById("resultadoTrabalhando");
+    let resultadoFolga = document.getElementById("resultadoFolga");
+
+    // Limpa o conteúdo da div antes de adicionar novos resultados
+    resultadoTrabalhando.innerHTML = "";
+    resultadoFolga.innerHTML = "";
+
+    if (nomesVazios.length > 0) {
+        resultadoTrabalhando.innerHTML = nomesVazios.join("<br>");
+    } else {
+        resultadoTrabalhando.innerHTML = "Não há funcionários trabalhando na coluna do dia atual.";
+    }
+    if (nomesNaoVazios.length > 0) {
+        resultadoFolga.innerHTML = nomesNaoVazios.join("<br>");
+    } else {
+        resultadoFolga.innerHTML = "Não há funcionários de folga na coluna do dia atual.";
+    }
+}
 				
