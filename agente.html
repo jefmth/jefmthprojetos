@@ -4,6 +4,7 @@
     <title>Escala Mensal</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
     <link rel="stylesheet" href="./css/escalas.css">
 </head>
 <body> <br><br><div style="display: none;">
@@ -74,63 +75,20 @@
 					  <h2 id="trab">Agentes Trabalhando</h2><br>
 					  <div class="results-container">
 						<div class="result">
-						  <p>Folga:</p>
-						  <div id="resultadoFolga"></div>
-						</div>
-						<div class="result">
 						  <p>Trabalhando:</p>
 						  <div id="resultadoTrabalhando"></div>
+						</div>
+						  <div class="result">
+						  <p>Folga:</p>
+						  <div id="resultadoFolga"></div>
 						</div>
 					  </div>
 					</div>
 
 				<br><br>
 		<script src="./js/6x2.js"></script>
-		<script>//função verificar
-			window.addEventListener('load', function() {
-    verificar();
-});
-
-function verificar() {
-    let diaAtual = date.getDate();
-    let colunaDia = 0;
-    for (let i = 1; i < daysRow.cells.length; i++) {
-        if (daysRow.cells[i].innerHTML == diaAtual) {
-            colunaDia = i;
-            break;
-        }
-    }
-
-    let nomesVazios = [];
-    let nomesNaoVazios = [];
-    for (let i = 4; i < table.rows.length; i++) {
-        let celula = table.rows[i].cells[colunaDia];
-        let nome = table.rows[i].cells[0].innerHTML;
-        if (celula.innerHTML == "") {
-            nomesVazios.push(nome);
-        } else {
-            nomesNaoVazios.push(nome);
-        }
-    }
-
-    let resultadoTrabalhando = document.getElementById("resultadoTrabalhando");
-    let resultadoFolga = document.getElementById("resultadoFolga");
-
-    // Limpa o conteúdo da div antes de adicionar novos resultados
-    resultadoTrabalhando.innerHTML = "";
-    resultadoFolga.innerHTML = "";
-
-    if (nomesVazios.length > 0) {
-        resultadoTrabalhando.innerHTML = nomesVazios.join("<br>");
-    } else {
-        resultadoTrabalhando.innerHTML = "Não há funcionários trabalhando na coluna do dia atual.";
-    }
-    if (nomesNaoVazios.length > 0) {
-        resultadoFolga.innerHTML = nomesNaoVazios.join("<br>");
-    } else {
-        resultadoFolga.innerHTML = "Não há funcionários de folga na coluna do dia atual.";
-    }
-}</script>
+	<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+		
    
 </body>
 </html>
