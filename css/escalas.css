@@ -1,4 +1,4 @@
- .name-cell {
+.name-cell {
             width: 500px;
             white-space: nowrap;
             overflow: hidden;
@@ -33,7 +33,7 @@
 		width: 213px;
 		height: auto;
 		margin-left: 71.5%;
-		margin-top: -5%;
+		margin-top: -2%;
 		font-weight: bold;
 		font-size: 12px;
 		}
@@ -73,7 +73,7 @@
 			}
         }
 		
-		/* div suspensa dos resultados */
+/* div suspensa dos resultados */
 		  .floating-box {
     position: fixed;
     top: 40%;
@@ -81,8 +81,8 @@
     transform: translate(-50%, -50%);
     box-shadow: 3px 3px 5px #888888;
     padding: 10px;
-	width: 50%;
-background-color:white;
+	width: 80%;
+	background-color:white;
   }
    .results-container {
     display: flex;
