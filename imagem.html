@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+    <title>Suba sua Imagem</title>
+    <style>
+        #passwordDiv {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+             box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+			padding: 20px;
+			width: 80%;
+			height: 240px;
+			border-radius: 5px;
+			background-color: white;
+        }
+        #incorrectPasswordDiv {
+            display: none;
+            position: fixed;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+             box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+			padding: 20px;
+			width: 80%;
+			height: 240px;
+			border-radius: 5px;
+			background-color: white;
+        }
+        .uploadedImage {
+            max-width: 100%;
+			margin-left: 1%;
+        }
+        @media (max-width: 600px) {
+            body {
+                font-size: 18px;
+            }
+        }
+		#caixa{
+		margin-left: 5%;
+		width: 100%;
+		}
+		 #botao {
+        width: 90%;
+        margin-bottom: 30px; /*espaçamento entre os botões*/
+       background-color: #008B8B; /*cores dos botões*/
+      }
+	  #clearButton{
+		width: 90%;
+	  }
+	  #imageInput{
+	  width: 90%;
+	  }
+	  #passwordInput{
+	  width: 50%;
+	  }
+	  
+    </style>
+</head>
+<body>
+  <div id="caixa">
+    <br>
+    <h1>Escolha suas Imagens</h1>
+    <br>
+    <div class="mb-3">
+      <input class="form-control" type="file" id="imageInput" accept="image/*" multiple>
+    </div><br>
+    <button id="botao" type="button" class="btn btn-primary" onclick="showPasswordDiv('upload')">Click para Subir</button>
+    <br><br>
+    <button id="clearButton" type="button" class="btn btn-danger" onclick="showPasswordDiv('clear')">Limpar Imagens</button>
+  <br><br>
+  <h4>QRU do Momento</h4>
+  </div>
+  <br><br>
+  <div id="uploadedImages"></div>
+  <div id="passwordDiv">
+    <label for="passwordInput">Senha:</label>
+    <input type="password" id="passwordInput">
+    <br><br>
+    <button type="button" class="btn btn-outline-success" onclick="submitPassword()">Enviar</button>  
+    <button type="button" class="btn btn-outline-danger" onclick="hidePasswordDiv()">Cancelar</button>
+  </div>
+  <div id="incorrectPasswordDiv">Senha incorreta!<br><br><button type="button" class="btn btn-outline-primary" onclick="hideIncorrectPasswordDiv()">OK</button></div>
+
+  <script>
+    var action = '';
+
+    function showPasswordDiv(act) {
+      action = act;
+      var passwordDiv = document.getElementById("passwordDiv");
+      passwordDiv.style.display = "block";
+    }
+
+    function hidePasswordDiv() {
+      var passwordDiv = document.getElementById("passwordDiv");
+      passwordDiv.style.display = "none";
+    }
+
+    function showIncorrectPasswordDiv() {
+      var incorrectPasswordDiv = document.getElementById("incorrectPasswordDiv");
+      incorrectPasswordDiv.style.display = "block";
+    }
+
+    function hideIncorrectPasswordDiv() {
+      var incorrectPasswordDiv = document.getElementById("incorrectPasswordDiv");
+      incorrectPasswordDiv.style.display = "none";
+    }
+
+    function submitPassword() {
+      var passwordInput = document.getElementById("passwordInput");
+      if (passwordInput.value === "mclove") {
+        if (action === 'upload') {
+          uploadImages();
+        } else if (action === 'clear') {
+          clearImages();
+        }
+        hidePasswordDiv();
+      } else {
+        showIncorrectPasswordDiv();
+      }
+    }
+
+    function uploadImages() {
+      var imageInput = document.getElementById("imageInput");
+      var uploadedImages = document.getElementById("uploadedImages");
+      if (imageInput.files && imageInput.files.length > 0) {
+        for (var i = 0; i < imageInput.files.length; i++) {
+          var reader = new FileReader();
+          reader.onload = function(e) {
+            var uploadedImage = document.createElement("img");
+            uploadedImage.src = e.target.result;
+            uploadedImage.className = "uploadedImage";
+            uploadedImages.appendChild(uploadedImage);
+            localStorage.setItem('images', uploadedImages.innerHTML);
+          };
+          reader.readAsDataURL(imageInput.files[i]);
+        }
+      }
+    }
+
+    function clearImages() {
+      var uploadedImages = document.getElementById("uploadedImages");
+      while (uploadedImages.firstChild) {
+        uploadedImages.removeChild(uploadedImages.firstChild);
+      }
+      localStorage.removeItem('images');
+    }
+
+    window.onload = function() {
+      var uploadedImages = document.getElementById("uploadedImages");
+      if (localStorage.getItem('images')) {
+        uploadedImages.innerHTML = localStorage.getItem('images');
+      }
+    }
+  </script>
+</body>
+
+
+</html>
