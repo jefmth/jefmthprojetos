@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+    <title>Reciclagem</title>
+    <style>
+        .progress {
+            width: 100%;
+            height: 20px;
+            position: relative;
+            background-color: #ddd;
+        }
+
+        .progress-bar {
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: green;
+            transition: width 0.5s;
+        }
+
+        #corpo {
+            margin-left: 2%;
+        }
+    </style>
+</head>
+<body>
+    <div id="corpo">
+        <h1>Reciclagem dos Agentes</h1>
+        <table id="myTable">
+            <tr>
+                <th>Agentes</th>
+            </tr>
+        </table>
+    </div><br>
+    <script>
+        let nomes = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
+        let table = document.getElementById("myTable");
+        for (let i = 0; i < nomes.length; i++) {
+            let row1 = table.insertRow(-1);
+            let cell1 = row1.insertCell(0);
+            cell1.innerHTML = '<input type="text" value="' + nomes[i] + '">';
+            let row2 = table.insertRow(-1);
+            let cell2 = row2.insertCell(0);
+            cell2.innerHTML = '<b>Última Reciclagem</b>';
+            let row3 = table.insertRow(-1);
+            let cell3 = row3.insertCell(0);
+            cell3.innerHTML = '<input type="date" id="dataInicio' + i + '" onchange="calculaDataFinal(' + i + ')">';
+            let row4 = table.insertRow(-1);
+            let cell4 = row4.insertCell(0);
+            cell4.innerHTML = '<b>Próxima Reciclagem</b>';
+            let row5 = table.insertRow(-1);
+            let cell5 = row5.insertCell(0);
+            cell5.innerHTML = '<input type="date" id="dataFinal' + i + '" disabled>';
+            let row6 = table.insertRow(-1);
+            let cell6 = row6.insertCell(0);
+            cell6.innerHTML = '<b>Faltam Dias:<b>';
+            let row7 = table.insertRow(-1);
+            let cell7 = row7.insertCell(0);
+            cell7.innerHTML = '<input type="text" id="diasRestantes' + i + '" disabled>';
+            let row8 = table.insertRow(-1);
+            let cell8 = row8.insertCell(0);
+            cell8.innerHTML = '<b>Evolução</b>';
+            let row9 = table.insertRow(-1);
+            let cell9 = row9.insertCell(0);
+            cell9.innerHTML = '<div class="progress"><div class="progress-bar" id="progressBar' + i + '"></div></div>';
+
+//Add a space between the names
+if (i !== nomes.length - 1) {
+                let spaceRow = table.insertRow(-1);
+                spaceRow.innerHTML = "<br>";
+}
+}
+
+function calculaDataFinal(i) {
+let dataInicio=document.getElementById("dataInicio"+i).value;
+let dataFinal=new Date(dataInicio);
+dataFinal.setFullYear(dataFinal.getFullYear()+2);
+document.getElementById("dataFinal"+i).valueAsDate=dataFinal;
+let diasRestantes=Math.round((dataFinal-new Date())/(1000*60*60*24));
+document.getElementById("diasRestantes"+i).value=diasRestantes;
+let progressBar=document.getElementById("progressBar"+i);
+
+if(diasRestantes>90){
+progressBar.style.backgroundColor='green';
+progressBar.style.width='100%';
+}else if(diasRestantes>60&&diasRestantes<=90){
+progressBar.style.backgroundColor='yellow';
+progressBar.style.width='75%';
+}else if(diasRestantes>40&&diasRestantes<=60){
+progressBar.style.backgroundColor='orange';
+progressBar.style.width='50%';
+}else if(diasRestantes>30&&diasRestantes<=40){
+progressBar.style.backgroundColor='red';
+progressBar.style.width='25%';
+}else{
+progressBar.style.backgroundColor='red';
+progressBar.style.width='0%';
+}
+}
+
+window.onload = function() {
+if (localStorage.getItem("nomes") !== null) {
+nomes = JSON.parse(localStorage.getItem("nomes"));
+}
+for (let i = 0; i < nomes.length; i++) {
+document.getElementsByTagName("input")[i].value = nomes[i];
+if (localStorage.getItem("dataInicio" + i) !== null) {
+document.getElementById("dataInicio" + i).value = localStorage.getItem("dataInicio" + i);
+calculaDataFinal(i);
+}
+}
+}
+
+window.onbeforeunload = function() {
+for (let i = 0; i < nomes.length; i++) {
+nomes[i] = document.getElementsByTagName("input")[i].value;
+if (document.getElementById("dataInicio" + i).value !== "") {
+localStorage.setItem("dataInicio" + i, document.getElementById("dataInicio" + i).value);
+}
+}
+localStorage.setItem("nomes", JSON.stringify(nomes));
+}
+    </script>
+</body>
+</html>
