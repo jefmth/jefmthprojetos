@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galeria de Fotos</title>
+  <!-- Adicione o link para o CSS do Bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <style>
+    .imagem {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      border: 1px solid DimGray;
+      cursor: pointer; /* Adiciona um cursor apontando para o elemento */
+    }
+
+    .container {
+      width: 100%;
+      height: 100%;
+      text-align: center;
+    }
+
+    /* Estilos para a imagem ampliada */
+    .imagem-ampliada {
+      display: none; /* Oculta a imagem ampliada inicialmente */
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .imagem-ampliada img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+    }
+
+    .fechar-ampliada {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12"><br>
+        <h2>Fotos dos/a QRUS</h2>
+        <br>
+        <div id="galeria"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="imagemAmpliada" class="imagem-ampliada">
+    <span class="fechar-ampliada">&times;</span>
+    <img src="" alt="Imagem Ampliada">
+  </div>
+
+  <!-- Adicione o link para o JavaScript do Bootstrap e jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Função para buscar as fotos a partir dos links
+    function buscarFotos() {
+      const links = [
+        "https://drive.google.com/uc?export=view&id=16OAy4-z_2NqnjtAROCWyvpgb4iHOoqmt", // grupo Erika
+		"https://drive.google.com/uc?export=view&id=1gEof3BUYG5CW5GwQV_nTbJs5QQ92XE9s", // grupo Erika
+        "https://drive.google.com/uc?export=view&id=1wSttsCyGYxRzWeS_9Yt-Zx9jOGVK3QtC", // grupo coquinho
+        "https://drive.google.com/uc?export=view&id=1jZ7Wg3FBxyVMP1ZrQWl4qhomLTRr3kTX", // grupo coquinho
+        "https://drive.google.com/uc?export=view&id=1_8uXnGZpXOjMoIOMn0bKKHCwmrXYXdgn",//5
+        "https://drive.google.com/uc?export=view&id=1ChZ4oJQ-41kqoS_ERdTkQB_7k__YKIt0", //6
+		"https://drive.google.com/uc?export=view&id=1Dj9XEb2GXzjMQcxSF_A24lzMSf_xhTio",//centauro
+		"https://drive.google.com/uc?export=view&id=1Dd2jZBH4jf0qq7Be9l9DTJCFPdOm2xAc",//centauro
+		"https://drive.google.com/uc?export=view&id=1PTs5XKiSpoBMYq0WnNhnQPumBjbxUAxo",//Yucon
+		"https://drive.google.com/uc?export=view&id=1qJearDyeIluKmdKEoFrO_IOe6-EC_6lK", //amigo erika
+		"https://drive.google.com/uc?export=view&id=1hwwpQcYUuh-nrRpjAL7BDNNddwKjSdBv",//centauro
+		"https://drive.google.com/uc?export=view&id=15IbN0eeSgTuTq2Cn9dG1Ji25Zv76LgFv",
+        "https://drive.google.com/uc?export=view&id=1CjSgkvnRnAbBbiX-T7ZxU5s6TgVaSwbw",	//7
+        "https://drive.google.com/uc?export=view&id=1Ct0XevHiYCpLGJc4pvoliH7RG6ebZCro",		// Link 4
+        "https://drive.google.com/uc?export=view&id=1V-Ova_7MtAFZx7wsDSQW3MV7hppHW2Bq", // Link 5
+        "https://drive.google.com/uc?export=view&id=1j4GOnulic2ZGzhbq5-GXDnOOk5iDxgNo", // Link 6
+        "https://drive.google.com/uc?export=view&id=1nbOqMMAo7SeYTldQmZYCzjU0TsyB2e2O", // Link 7
+        "https://drive.google.com/uc?export=view&id=1sJ2RUi88DSBapM1gIplyZKmM3JPeC39Z", // Link 8
+        "https://drive.google.com/uc?export=view&id=1bQHtI8bAgaXRMmMpTXlU8uw4i4R_-Wqg", // Link 9
+        "https://drive.google.com/uc?export=view&id=1B_nX3HWW8NorRIkc4Fw62S7qDcTYhKi2", // Link 10
+        "https://drive.google.com/uc?export=view&id=1DQo04K_ABpLvMHQeWCuLM3ySf6HQOZNz",
+        "https://drive.google.com/uc?export=view&id=1N9rOXld3EVKHBSjzZTvz1kwmwL6A6g01",
+        "https://drive.google.com/uc?export=view&id=1p6QCeeAdfbwic6jEmXP9hi0AzP7Pl_aR",
+        "",
+        "",
+      ];
+
+      const galeria = document.getElementById("galeria");
+      const imagemAmpliada = document.getElementById("imagemAmpliada");
+      const imagemAmpliadaImg = document.querySelector(".imagem-ampliada img");
+      const fecharAmpliada = document.querySelector(".fechar-ampliada");
+
+      // Função para exibir a imagem ampliada
+      function exibirImagemAmpliada(link) {
+        imagemAmpliadaImg.src = link;
+        imagemAmpliada.style.display = "flex";
+      }
+
+      // Função para fechar a imagem ampliada
+      function fecharImagemAmpliada() {
+        imagemAmpliada.style.display = "none";
+      }
+
+      // Loop para criar as tags <img> para as fotos
+      for (let i = 0; i < links.length; i++) {
+        const link = links[i]; // Seleciona um link da lista de links
+        const img = document.createElement("img");
+        img.src = link;
+        img.alt = "Foto " + (i + 1);
+        img.classList.add("imagem");
+
+        // Adiciona um evento de clique para exibir a imagem ampliada
+        img.addEventListener("click", function() {
+          exibirImagemAmpliada(link);
+        });
+
+        galeria.appendChild(img);
+      }
+
+      // Adiciona um evento de clique para fechar a imagem ampliada
+      fecharAmpliada.addEventListener("click", fecharImagemAmpliada);
+    }
+
+    // Chamada da função ao abrir a página
+    buscarFotos();
+  </script>
+</body>
+
+</html>
+
+
