@@ -133,19 +133,32 @@
 </ul><br>
 
     <script>
-        var player = document.getElementById('player');
-        var playlist = document.getElementById('playlist');
-        var links = playlist.getElementsByTagName('a');
-        for (var i=0; i<links.length; i++) {
-            var link = links[i];
-            link.onclick = function(e) {
-                e.preventDefault();
-                player.src = this.href;
-                player.load();
-                player.play();
-            }
-        }
-    </script>
+       var player = document.getElementById('player');
+var playlist = document.getElementById('playlist');
+var links = playlist.getElementsByTagName('a');
+var currentSong = 0;
+
+player.addEventListener('ended', function() {
+    currentSong++;
+    if (currentSong >= links.length) {
+        currentSong = 0;
+    }
+    player.src = links[currentSong].href;
+    player.load();
+    player.play();
+});
+
+for (var i=0; i<links.length; i++) {
+    var link = links[i];
+    link.onclick = function(e) {
+        e.preventDefault();
+        currentSong = Array.prototype.indexOf.call(links, this);
+        player.src = this.href;
+        player.load();
+        player.play();
+    }
+}
+
 </body>
 
 </html>
