@@ -36,7 +36,7 @@
 		#artista {
         width: 100%;
         height: auto;
-        background: linear-gradient(to bottom, #000033, #000066, #000099);
+        background: linear-gradient(to bottom, #01000b, #05012b, #080245, #0b0261, #13049d, #1902fb);
 		color: white;
 		border-radius: 10px;
         box-shadow: 5px 5px 10px #888888;
@@ -70,6 +70,15 @@
 	h4{
 	margin-left: 2%;
 	}
+	li{
+	background-color: transparent;
+	margin-left: -1%;
+	margin-right: 1%;
+	border: 1px solid #ddd;
+	margin-bottom: 1%;
+	padding-left: 20px; /* movendo texto dentro da li */
+	border-radius: 10px;
+	}
 
     </style>
 </head>
@@ -84,7 +93,7 @@
         </div>
 		 <audio id="player" controls></audio>
 		 <h4>Click na Música para Começar</h4><br>
-  <ul id="playlist">
+   <ul id="playlist">
 	<li><a href="https://drive.google.com/uc?export=download&id=1X4mlUbAZOZnNw0l23Bx1QjtP7G0ZX5to">Could You Be Loved</a>&nbsp &nbsp 
 		<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1X4mlUbAZOZnNw0l23Bx1QjtP7G0ZX5to'">Baixar</button></li>
 	<li><a href="https://drive.google.com/uc?export=download&id=1v2DtRZ8Lif0MYVCWx70QOJnrYpf9z8ig">Is This Love</a>&nbsp &nbsp  
@@ -133,7 +142,6 @@
 	<li><a href="https://drive.google.com/uc?export=download&id=1GRYkf5KdkVvudfMK9iWBatQIFKccSU_G">Zimbabwe (1979)</a>&nbsp &nbsp 
 	<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1GRYkf5KdkVvudfMK9iWBatQIFKccSU_G'">Baixar</button></li>
 </ul><br>
-
     <script>
         var player = document.getElementById('player');
 var playlist = document.getElementById('playlist');
@@ -165,5 +173,4 @@ for (var i=0; i<links.length; i++) {
 </body>
 
 </html>
-
 
