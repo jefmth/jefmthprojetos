@@ -63,7 +63,7 @@
 		.loading-text {
             position: fixed;
             top: calc(47% + 70px);
-            left: 45%;
+            left: 50%;
             transform: translateX(-50%);
             color: white;
             font-size: 12px;
