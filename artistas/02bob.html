@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>Bob Marley</title>
+    <style>
+        h4{
+		text-align: center;
+		font-family: 'Roboto', sans-serif;
+		}
+        #playlist {
+            list-style: none;
+            padding: 0;
+			margin-left: 2%;
+        }
+        #player {
+            width: 100%;
+            background-color: none;
+            color: #20B2AA;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #player::-webkit-media-controls-panel {
+            background-color: white;
+        }
+		#artista {
+        width: 100%;
+        height: auto;
+        background: linear-gradient(to bottom, #01000b, #05012b, #080245, #0b0261, #13049d, #1902fb);
+		color: white;
+		border-radius: 10px;
+        box-shadow: 5px 5px 10px #888888;
+    }
+	#img {
+    display: block;
+    margin: 0 auto;
+      }
+	#historia{
+	display: block;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-family: 'Roboto', sans-serif;
+	}
+	#historia p {
+    text-align: justify;
+}
+
+	a {
+    text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+        }
+	li{
+		margin-bottom: 20px;
+	}
+	.btn-link{
+	 text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	}
+	h4{
+	margin-left: 2%;
+	}
+	li{
+	background-color: transparent;
+	margin-left: -1%;
+	margin-right: 1%;
+	border: 1px solid #ddd;
+	margin-bottom: 1%;
+	padding-left: 20px; /* movendo texto dentro da li */
+	border-radius: 10px;
+	}
+
+    </style>
+</head>
+<body>
+    <div id="artista">
+        <p></p><br>
+        <h1>Bob Marley as Melhores</h1>
+        <audio id="som" src="https://drive.google.com/uc?export=download&id=1DG0Wosxsg1HpCdpGC_I1sEdprRy7pw_z" type="audio/mpeg"></audio>
+        <img id="img" src="https://drive.google.com/uc?export=view&id=1R7qbHiQ928Znlk8os0bTld6YXjo-Nrzy" alt="Imagem de Bob Marley">
+        <div id="historia">
+            <p>Bob Marley foi um famoso cantor, compositor e músico jamaicano, amplamente considerado como uma das figuras mais influentes da música reggae. Ele nasceu em 6 de fevereiro de 1945 em Nine Mile, Jamaica, e faleceu em 11 de maio de 1981 em Miami, Estados Unidos.</p>
+        </div>
+		 <audio id="player" controls></audio>
+		 <h4>Click na Música para Começar</h4><br>
+   <ul id="playlist">
+	<li><a href="https://drive.google.com/uc?export=download&id=1X4mlUbAZOZnNw0l23Bx1QjtP7G0ZX5to">Could You Be Loved</a>&nbsp &nbsp 
+		<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1X4mlUbAZOZnNw0l23Bx1QjtP7G0ZX5to'">Baixar</button></li>
+		
+	<li><a href="https://drive.google.com/uc?export=download&id=1v2DtRZ8Lif0MYVCWx70QOJnrYpf9z8ig">Is This Love</a>&nbsp &nbsp  
+	<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1v2DtRZ8Lif0MYVCWx70QOJnrYpf9z8ig'">Baixar</button></li>
+	
+	<li><a href="https://drive.google.com/uc?export=download&id=1Cr2PrcOl8MV0eiGqc-JVwYj0CiHCYGOi">Trenchtown Rock 1975</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1Cr2PrcOl8MV0eiGqc-JVwYj0CiHCYGOi'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1c-SXRoFC-6s1kvUise9k7G_MeBR_NI5V">Running Away</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1c-SXRoFC-6s1kvUise9k7G_MeBR_NI5V'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1OGsyoQHo_T2761mRjBdudTrE47qycbeP">Satisfy My Sou</a>&nbsp &nbsp &nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1OGsyoQHo_T2761mRjBdudTrE47qycbeP'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=15YuOILlBnYOT6fRyErrt-_StKPug3fj2">Burnin And Lootin</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=15YuOILlBnYOT6fRyErrt-_StKPug3fj2'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1J40TLt4IY4Ih6K6gyPnGmtWqiLgDYn6X">Exodus</a>&nbsp &nbsp  
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1J40TLt4IY4Ih6K6gyPnGmtWqiLgDYn6X'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1PmxtXjMFjP3iWdX7jkfC1Ep6mVWCy8KQ">Get Up, Stand Up</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1PmxtXjMFjP3iWdX7jkfC1Ep6mVWCy8KQ'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1EiuK00BFuuGTH7PLF064mc58x4RD88Ov">Mellow Mood</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1EiuK00BFuuGTH7PLF064mc58x4RD88Ov'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1bctGLYxDQQDOz1LaDzg6rMRvCaeB6Dda">Redemption</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1bctGLYxDQQDOz1LaDzg6rMRvCaeB6Dda'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=15eTNescf7Omo4ZJUU5eC_JmiO1uZ5sma">Sun Is</a>&nbsp &nbsp  
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=15eTNescf7Omo4ZJUU5eC_JmiO1uZ5sma'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1xWT1hnZCu2lfQgPjO4P6GaHqJaPKHv6s">The Heathen Exodus 40</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1xWT1hnZCu2lfQgPjO4P6GaHqJaPKHv6s'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1Q-ATEpJAe3h-0r2jQIGuvvuCBSXw8Gjc">Them Belly Full </a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1Q-ATEpJAe3h-0r2jQIGuvvuCBSXw8Gjc'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=10PK2DitfzZs3HrVJSedpgc4bSYUNkCU9">Time Will</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=10PK2DitfzZs3HrVJSedpgc4bSYUNkCU9'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=185-J0b6SkQ5cZLMxE67hA5AXyU1nhD_f">Trenchtown Rock </a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=185-J0b6SkQ5cZLMxE67hA5AXyU1nhD_f'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=183m4vNyPt4rrwTpvAqzyGVQ8xv688e5i">War</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=183m4vNyPt4rrwTpvAqzyGVQ8xv688e5i'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1eNBY8TcP7DEjK0p-WcxdX-zxTgYJ6r53">I Shot The Sheriff (1973)</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1eNBY8TcP7DEjK0p-WcxdX-zxTgYJ6r53'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1xtU06GPufWD_rDVywA2DmSw1ir98jYD_">One Drop (1979)</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1xtU06GPufWD_rDVywA2DmSw1ir98jYD_'">Baixar</button></li>
+	
+	<li><a href="https://drive.google.com/uc?export=download&id=16cXobCEaOk5o-y5M6wXO2mpTkBT7QPE5">Put It On (1973)</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=16cXobCEaOk5o-y5M6wXO2mpTkBT7QPE5'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=11sG78iS0GZgFG6Ktwm2RuoJdi-UfUxnN">Clock Roadblock (1974)</a>&nbsp &nbsp  
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=11sG78iS0GZgFG6Ktwm2RuoJdi-UfUxnN'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1jxDGZu4ZQVywAXv3kISIyfVuCILkQgW-">Who The Cap Fit (1976)</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1jxDGZu4ZQVywAXv3kISIyfVuCILkQgW-'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1x550b18CAfW7Usj-Mbt_LRTgdj0s5Llv">Work (1991)</a>&nbsp &nbsp 
+    <button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1x550b18CAfW7Usj-Mbt_LRTgdj0s5Llv'">Baixar</button></li>
+	<li><a href="https://drive.google.com/uc?export=download&id=1GRYkf5KdkVvudfMK9iWBatQIFKccSU_G">Zimbabwe (1979)</a>&nbsp &nbsp 
+	<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1GRYkf5KdkVvudfMK9iWBatQIFKccSU_G'">Baixar</button></li>
+</ul><br>
+    <script>
+        var player = document.getElementById('player');
+var playlist = document.getElementById('playlist');
+var links = playlist.getElementsByTagName('a');
+var currentSong = 0;
+
+player.addEventListener('ended', function() {
+    currentSong++;
+    if (currentSong >= links.length) {
+        currentSong = 0;
+    }
+    player.src = links[currentSong].href;
+    player.load();
+    player.play();
+});
+
+for (var i=0; i<links.length; i++) {
+    var link = links[i];
+    link.onclick = function(e) {
+        e.preventDefault();
+        currentSong = Array.prototype.indexOf.call(links, this);
+        player.src = this.href;
+        player.load();
+        player.play();
+    }
+}
+
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Legião Urbana</title>
+    <style>
+       h1{
+		text-align: center;
+		}
+        #playlist {
+            list-style: none;
+            padding: 0;
+			margin-left: 1%;
+        }
+        #playlist li {
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .download-icon {
+            margin-left: 10px;
+            text-decoration: none;
+        }
+        #player {
+            width: 100%;
+            background-color: none;
+            color: #20B2AA;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #player::-webkit-media-controls-panel {
+            background-color: #00CED1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Legião Urbana</h1>
+    <audio id="player" controls></audio>
+    <ul id="playlist"></ul>
+	
+    <script>
+        const songs = [
+            { title: 'Bob Marley - Is This Love', url: 'https://drive.google.com/uc?export=download&id=1Y6B11LdN9zTJTcGn8EMvUp768KfUnvhy' },
+            { title: 'Os Paralamas Do Sucesso - Uma Brasileira', url: 'https://drive.google.com/uc?export=download&id=1a1A_zAGV-JoShzSM5QcZSwxPn8SlE_3I' },
+            { title: 'Pais e Filhos - Legião Urbana', url: 'https://drive.google.com/uc?export=download&id=1JW5try1_fL71r8KVrGUmmyatoBBHN3ja' }
+			
+        ];
+
+        const player = document.querySelector('#player');
+        const playlist = document.querySelector('#playlist');
+
+        songs.forEach(song => {
+            const li = document.createElement('li');
+            li.textContent = song.title;
+
+            const downloadIcon = document.createElement('a');
+            downloadIcon.href = song.url;
+            downloadIcon.download = true;
+            downloadIcon.textContent = '⬇️';
+            downloadIcon.classList.add('download-icon');
+
+            li.appendChild(downloadIcon);
+
+            li.addEventListener('click', (event) => {
+                if (event.target === downloadIcon) return;
+                player.src = song.url;
+                player.play();
+            });
+
+            playlist.appendChild(li);
+        });
+    </script>
+	
+</body>
+</html>
+
