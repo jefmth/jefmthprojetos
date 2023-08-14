@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>Legião Urbana</title>
+    <style>
+        h1{
+		text-align: center;
+		font-family: 'Roboto', sans-serif;
+		}
+        #playlist {
+            list-style: none;
+            padding: 0;
+			margin-left: 2%;
+        }
+        #player {
+            width: 100%;
+            background-color: none;
+            color: #20B2AA;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #player::-webkit-media-controls-panel {
+            background-color: white;
+        }
+		#artista {
+        width: 100%;
+        height: auto;
+        background: linear-gradient(to bottom, #01000b, #05012b, #080245, #0b0261, #13049d, #1902fb);
+		color: white;
+		border-radius: 10px;
+        box-shadow: 5px 5px 10px #888888;
+    }
+	#img {
+    display: block;
+    margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+      }
+	#historia{
+	display: block;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-family: 'Roboto', sans-serif;
+	}
+	#historia p {
+    text-align: justify;
+}
+
+	a {
+    text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+        }
+	.btn-link{
+	 text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	}
+	h4{
+	margin-left: 2%;
+	}
+	li{
+	background-color: transparent;
+	margin-left: -1%;
+	margin-right: 1%;
+	border: 1px solid #ddd;
+	margin-bottom: 3%;
+	padding-left: 20px; /* movendo texto dentro da li */
+	border-radius: 10px;
+	}
+
+    </style>
+</head>
+<body>
+    <div id="artista">
+        <p></p><br>
+        <h1>Legião Urbana as Melhores</h1>
+        <audio id="som" src="https://drive.google.com/uc?export=download&id=1DG0Wosxsg1HpCdpGC_I1sEdprRy7pw_z" type="audio/mpeg"></audio>
+        <img id="img" src="https://drive.google.com/uc?export=view&id=1cSAIdB_3mipPCZ1THBGf_PZSfdi_VMX9" alt="Imagem de Bob Marley"><br>
+        <div id="historia">
+            <p>Legião Urbana foi uma das bandas de rock mais icônicas do Brasil, 
+			formada em Brasília no ano de 1982. A banda era liderada pelo carismático Renato Russo, que também era o vocalista e principal letrista. A formação original da banda 
+			incluía também Dado Villa-Lobos na guitarra e Marcelo Bonfá na bateria.</p>
+        </div>
+		 <audio id="player" controls></audio>
+		 <h4>Click na Música para Começar</h4><br>
+   <ul id="playlist">
+	<li><a href="https://drive.google.com/uc?export=download&id=1bRVwSB4ctKkjGzF1Wn3wRy4xdifv9IUS">Tempo Perdido</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1bRVwSB4ctKkjGzF1Wn3wRy4xdifv9IUS'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=13LQs7EVDrMEzH5MHLHXpk5hYSWlECj2Y">Eduardo e Mônica</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=13LQs7EVDrMEzH5MHLHXpk5hYSWlECj2Y'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1OKmhGJVd2mnKRZ2G3uQG9J5k-R8hcn-C">Pais e Filhos</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1OKmhGJVd2mnKRZ2G3uQG9J5k-R8hcn-C'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1-HoZC_mfkDbvdfs1St-etMcRaWG7qebu">Quase sem querer</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1-HoZC_mfkDbvdfs1St-etMcRaWG7qebu'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1nVJcG_-oXtsUPMWNVz8E2my2gzUvwbLe">Hoje A Noite Não Tem Luar</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1nVJcG_-oXtsUPMWNVz8E2my2gzUvwbLe'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1Nj75RE2AqgoMjJ7GuX99rDkyQZnubL-I">Ainda É Cedo</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1Nj75RE2AqgoMjJ7GuX99rDkyQZnubL-I'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1oe9WXI1-jGVmi7vykHrHCMld3S1Djfy-">Não Consigo Nem Te Odiar</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1oe9WXI1-jGVmi7vykHrHCMld3S1Djfy-'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1JgVQ_Dc4Pz8nbVaBX61_T5nwOw1plb6s">Que país é esse</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1JgVQ_Dc4Pz8nbVaBX61_T5nwOw1plb6s'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1W9Co7LGl9wo0qGUn-PK2x-Q1Y78OQn18">Vento No Litoral</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1W9Co7LGl9wo0qGUn-PK2x-Q1Y78OQn18'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1_czwP5QvScyUO0nTnpTeuoeQ62V-Wuvy">Faroeste Caboclo</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1_czwP5QvScyUO0nTnpTeuoeQ62V-Wuvy'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1qDK18xrQlwZTu3fOE5rHSN5WgESZzBEp">Geração Coca-Cola</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1qDK18xrQlwZTu3fOE5rHSN5WgESZzBEp'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1dmhf7W4upIFamkTdt5ybIeSTatUUsB4L">Índios</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1dmhf7W4upIFamkTdt5ybIeSTatUUsB4L'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1gdKMZkyWt1Ezx4q4g9zGt9Fg9be8kJOv">Por enquanto</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1gdKMZkyWt1Ezx4q4g9zGt9Fg9be8kJOv'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=12UlvgIgEYlXuSTx0MKDPAqirWfD1aDYm">Monte Castelo</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=12UlvgIgEYlXuSTx0MKDPAqirWfD1aDYm'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1EqU6yc3XtRCExyTAhKWp82uOnoMm3Iry">Eu Sei </a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1EqU6yc3XtRCExyTAhKWp82uOnoMm3Iry'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=19gpFvwJZaPPuhzvCS9Yk1mix_j-oXRfa">Antes das seis</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=19gpFvwJZaPPuhzvCS9Yk1mix_j-oXRfa'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1B9DoVuzGK_Rk7KudMWTbIlAHckLLI92_">Paraíso</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1B9DoVuzGK_Rk7KudMWTbIlAHckLLI92_'">Baixar</button></li>
+ 
+<li><a href="https://drive.google.com/uc?export=download&id=1bxtYVBRB5G_a0agQkJjypaHiSF-zshHS">Vinte e nove</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1bxtYVBRB5G_a0agQkJjypaHiSF-zshHS'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1NyfNXVRz4lNR-qjVKEa4gPv2lwBmTJFc">Meninos E Meninas</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1NyfNXVRz4lNR-qjVKEa4gPv2lwBmTJFc'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1gSpRXOsgymTjuwA1I9Yoe4a_YlI5RYhc">Quando o sol bater</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1gSpRXOsgymTjuwA1I9Yoe4a_YlI5RYhc'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=12XS4OXOVi8jLCZVytALhYAhR2Te8ZVu1">Giz</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=12XS4OXOVi8jLCZVytALhYAhR2Te8ZVu1'">Baixar</button></li> 
+
+<li><a href="https://drive.google.com/uc?export=download&id=1WkOnDf8WOiBECy556IA3IDRTLuNialQ0">Clarisse</a>&nbsp &nbsp 
+<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1WkOnDf8WOiBECy556IA3IDRTLuNialQ0'">Baixar</button></li> 
+</ul><br>
+    <script>
+        var player = document.getElementById('player');
+var playlist = document.getElementById('playlist');
+var links = playlist.getElementsByTagName('a');
+var currentSong = 0;
+
+player.addEventListener('ended', function() {
+    currentSong++;
+    if (currentSong >= links.length) {
+        currentSong = 0;
+    }
+    player.src = links[currentSong].href;
+    player.load();
+    player.play();
+});
+
+for (var i=0; i<links.length; i++) {
+    var link = links[i];
+    link.onclick = function(e) {
+        e.preventDefault();
+        currentSong = Array.prototype.indexOf.call(links, this);
+        player.src = this.href;
+        player.load();
+        player.play();
+    }
+}
+
+    </script>
+</body>
+
+</html>
+

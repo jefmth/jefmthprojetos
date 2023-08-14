@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,300&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+
+    <title>Paralamas do Sucesso</title>
+    <style>
+        h1{
+		text-align: center;
+		font-family: 'Roboto', sans-serif;
+		}
+        #playlist {
+            list-style: none;
+            padding: 0;
+			margin-left: 2%;
+        }
+        #player {
+            width: 100%;
+            background-color: none;
+            color: #20B2AA;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #player::-webkit-media-controls-panel {
+            background-color: white;
+        }
+		#artista {
+        width: 100%;
+        height: auto;
+        background: linear-gradient(to bottom, #01000b, #05012b, #080245, #0b0261, #13049d, #1902fb);
+		color: white;
+		border-radius: 10px;
+        box-shadow: 5px 5px 10px #888888;
+    }
+	#img {
+    display: block;
+    margin: 0 auto;
+	box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+      }
+	#historia{
+	display: block;
+	margin-left: 2%;
+	margin-right: 2%;
+	font-family: 'Roboto', sans-serif;
+	}
+	#historia p {
+    text-align: justify;
+}
+
+	a {
+    text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	color: white;
+        }
+	.btn-link{
+	 text-decoration: none;
+	font-family: 'Roboto', sans-serif;
+	}
+	h4{
+	margin-left: 2%;
+	}
+	li{
+	background-color: transparent;
+	margin-left: -1%;
+	margin-right: 1%;
+	border: 1px solid #ddd;
+	margin-bottom: 3%;
+	padding-left: 20px; /* movendo texto dentro da li */
+	border-radius: 10px;
+	}
+
+    </style>
+</head>
+<body>
+    <div id="artista">
+        <p></p><br>
+        <h1>Paralamas do Sucesso as Melhores</h1>
+        <audio id="som" src="https://drive.google.com/uc?export=download&id=1DG0Wosxsg1HpCdpGC_I1sEdprRy7pw_z" type="audio/mpeg"></audio>
+        <img id="img" src="https://drive.google.com/uc?export=view&id=1ponS763xkLMQN7yWu3Ahivnn47q2U7oC" alt="Imagem de Bob Marley"><br>
+        <div id="historia">
+            <p>Os Paralamas do Sucesso são uma famosa banda de rock brasileira que foi formada no Rio de Janeiro em 1982. O grupo é conhecido por sua mistura única de rock, reggae e influências latinas, o que os tornou uma das 
+			bandas mais icônicas e influentes do cenário musical brasileiro.</p>
+        </div>
+		 <audio id="player" controls></audio>
+		 <h4>Click na Música para Começar</h4><br>
+   <ul id="playlist">
+	<li><a href="https://drive.google.com/uc?export=download&id=16sWF6G3mowDyP5up76q1BatpjH7bA7vn">Lourinha Bombril</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=16sWF6G3mowDyP5up76q1BatpjH7bA7vn'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=14TZJOOwz0fYX3kZfyOKL73n0DaMP7ui5">Óculos</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=14TZJOOwz0fYX3kZfyOKL73n0DaMP7ui5'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=193GsevgOcmmGuX1vFMBF5FY6oViuf2pw">Meu Erro</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=193GsevgOcmmGuX1vFMBF5FY6oViuf2pw'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=174ITF6sBreQRRGDEogDNkMQH_8s5Gs1l">Melo Do Marinheiro</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=174ITF6sBreQRRGDEogDNkMQH_8s5Gs1l'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1rtdLavfdR_RAgewYTdZr-IzMZ_JKzAvd">Lanterna Dos Afogados</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1rtdLavfdR_RAgewYTdZr-IzMZ_JKzAvd'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1kAmjajfVucfIrbLMM5j11_ZIZemVQwaN">Uma Brasileira</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1kAmjajfVucfIrbLMM5j11_ZIZemVQwaN'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1mFYJ0JrPzteJftGRssST03S3sHwixocd">Aonde Quer Que Eu Vá</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1mFYJ0JrPzteJftGRssST03S3sHwixocd'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1NCEeiBOxaiGzDIbz4p00zPIiK78rNRtB">Vital E Sua Moto</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1NCEeiBOxaiGzDIbz4p00zPIiK78rNRtB'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=110kC-4VkXVUz0091rPtlvz3CxQ4yWfS8">Perplexo</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=110kC-4VkXVUz0091rPtlvz3CxQ4yWfS8'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1g6F7OZC196x2IACraln_RoOhQru1vKaz">Ela Disse Adeus</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1g6F7OZC196x2IACraln_RoOhQru1vKaz'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1cgl8vdi1YD6YlU39ehwtrRx49EMSLhBq">Fui Eu</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1cgl8vdi1YD6YlU39ehwtrRx49EMSLhBq'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1LXO0iKcaMQSPwydZrhmPQ6hGclPOxXuc">Romance Ideal</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1LXO0iKcaMQSPwydZrhmPQ6hGclPOxXuc'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1bA0JOEHwvtdC0clMZwfpXgjiPNp1Bl_M">Me Liga</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1bA0JOEHwvtdC0clMZwfpXgjiPNp1Bl_M'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1IExqaQMnXPtp8h4UxZ_kfAXFk564Vzzl">Caleidoscópio</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1IExqaQMnXPtp8h4UxZ_kfAXFk564Vzzl'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1rtqznw6_QzVq6bt-WH-PXaqqm9IAC-B2">Assaltaram A Gramática</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1rtqznw6_QzVq6bt-WH-PXaqqm9IAC-B2'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1B51fxkELn64_5rmL52wFpHjKTGa2XxX_">Trac-Trac</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1B51fxkELn64_5rmL52wFpHjKTGa2XxX_'">Baixar</button></li>
+
+<li><a href="https://drive.google.com/uc?export=download&id=1GfL-EbD4q7fGIrjjsZ4o16Abbd6VF3JX">O Beco</a>&nbsp;&nbsp;<button class="btn btn-link" onclick="window.location.href='https://drive.google.com/uc?export=download&id=1GfL-EbD4q7fGIrjjsZ4o16Abbd6VF3JX'">Baixar</button></li>
+
+</ul><br>
+    <script>
+        var player = document.getElementById('player');
+var playlist = document.getElementById('playlist');
+var links = playlist.getElementsByTagName('a');
+var currentSong = 0;
+
+player.addEventListener('ended', function() {
+    currentSong++;
+    if (currentSong >= links.length) {
+        currentSong = 0;
+    }
+    player.src = links[currentSong].href;
+    player.load();
+    player.play();
+});
+
+for (var i=0; i<links.length; i++) {
+    var link = links[i];
+    link.onclick = function(e) {
+        e.preventDefault();
+        currentSong = Array.prototype.indexOf.call(links, this);
+        player.src = this.href;
+        player.load();
+        player.play();
+    }
+}
+
+    </script>
+</body>
+
+</html>
+
