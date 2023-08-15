@@ -66,6 +66,7 @@
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let player;
+
         function onYouTubeIframeAPIReady() {
             player = new YT.Player('player', {
                 events: {
@@ -75,15 +76,15 @@
         }
 
         function onPlayerReady(event) {
-            const videoList = document.getElementById('videoList');
-            videoList.addEventListener('click', function(event) {
-                event.preventDefault();
-                if (event.target.tagName === 'A') {
-                    player.loadVideoByUrl(event.target.dataset.src);
-                }
+            const videoLinks = document.querySelectorAll('#videoList a');
+            videoLinks.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    const videoSrc = link.getAttribute('data-src');
+                    player.loadVideoByUrl(videoSrc);
+                });
             });
         }
     </script>
 </body>
-
 </html>
