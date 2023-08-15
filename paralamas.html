@@ -1,6 +1,7 @@
-<!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
@@ -54,29 +55,34 @@
     <div id="historia">
         <p>Os Paralamas do Sucesso são uma famosa banda de rock brasileira que foi formada no Rio de Janeiro em 1982. O grupo é conhecido por sua mistura única de rock, reggae e influências latinas, o que os tornou uma das bandas mais icônicas e influentes do cenário musical brasileiro.</p>
     </div>
-    <iframe id="player" src="https://www.youtube.com/embed/bHHfzKYv32I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" autoplay allowfullscreen></iframe>
+    <iframe id="player" src="https://www.youtube.com/embed/bHHfzKYv32I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
     <ul id="videoList">
         <li><a href="#" data-src="https://www.youtube.com/embed/ZZmOVlCSCt8">Lourinha Bombril</a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/IltVPNqYybw">Óculos</a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/Gsyp5X_l5sI">Meu Erro</a></li>
-        <li><a href="#" data-src="https://www.youtube.com/embed/IR9RiSHC28E">Melo Do Marinheiro </a></li>
+        <li><a href="#" data-src="https://www.youtube.com/embed/IR9RiSHC28E">Melo Do Marinheiro</a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/43605EPCr6E">Lanterna Dos Afogados</a></li>
     </ul>
-
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let player;
         function onYouTubeIframeAPIReady() {
-            player = new YT.Player('player');
+            player = new YT.Player('player', {
+                events: {
+                    'onReady': onPlayerReady
+                }
+            });
         }
 
-        const videoList = document.getElementById('videoList');
-        videoList.addEventListener('click', function(event) {
-            event.preventDefault();
-            if (event.target.tagName === 'A') {
-                player.loadVideoByUrl({mediaContentUrl: event.target.dataset.src});
-            }
-        });
+        function onPlayerReady(event) {
+            const videoList = document.getElementById('videoList');
+            videoList.addEventListener('click', function(event) {
+                event.preventDefault();
+                if (event.target.tagName === 'A') {
+                    player.loadVideoByUrl(event.target.dataset.src);
+                }
+            });
+        }
     </script>
 </body>
 
