@@ -48,23 +48,21 @@
 	  }
     </style>
 </head>
-<body><br>
- <h4>Paralamas do Sucesso as Melhores</h4><br>
- <img id="img" src="https://drive.google.com/uc?export=view&id=1ponS763xkLMQN7yWu3Ahivnn47q2U7oC" alt="Imagem de Bob Marley"><br>
- <div id="historia">
-            <p>Os Paralamas do Sucesso são uma famosa banda de rock brasileira que foi formada no Rio de Janeiro em 1982. O grupo é conhecido por sua mistura única de rock, reggae e influências latinas, o que os tornou uma das 
-			bandas mais icônicas e influentes do cenário musical brasileiro.</p>
-        </div>
-   <iframe src="https://www.youtube.com/embed/Z_Frz977Ss4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" autoplay muted allowfullscreen></iframe>
-	<ul id="videoList"><br>
+<body>
+    <h4>Paralamas do Sucesso as Melhores</h4>
+    <img id="img" src="https://drive.google.com/uc?export=view&id=1ponS763xkLMQN7yWu3Ahivnn47q2U7oC" alt="Imagem de Bob Marley">
+    <div id="historia">
+        <p>Os Paralamas do Sucesso são uma famosa banda de rock brasileira que foi formada no Rio de Janeiro em 1982. O grupo é conhecido por sua mistura única de rock, reggae e influências latinas, o que os tornou uma das bandas mais icônicas e influentes do cenário musical brasileiro.</p>
+    </div>
+    <iframe id="player" src="https://www.youtube.com/embed/bHHfzKYv32I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" autoplay muted allowfullscreen></iframe>
+    <ul id="videoList">
         <li><a href="#" data-src="https://www.youtube.com/embed/ZZmOVlCSCt8">Lourinha Bombril</a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/IltVPNqYybw">Óculos</a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/Gsyp5X_l5sI">Meu Erro</a></li>
-        <li><a href="#" data-src="hhttps://www.youtube.com/embed/IR9RiSHC28E">Melo Do Marinheiro </a></li>
+        <li><a href="#" data-src="https://www.youtube.com/embed/IR9RiSHC28E">Melo Do Marinheiro </a></li>
         <li><a href="#" data-src="https://www.youtube.com/embed/43605EPCr6E">Lanterna Dos Afogados</a></li>
     </ul>
- <!--<Video src="https://www.youtube.com/embed/bHHfzKYv32I" controls width="500px" autoplay muted poster="./imagens/05.png">
- </Video> -->
+
     <script src="https://www.youtube.com/iframe_api"></script>
     <script>
         let player;
@@ -76,11 +74,10 @@
         videoList.addEventListener('click', function(event) {
             event.preventDefault();
             if (event.target.tagName === 'A') {
-                player.loadVideoByUrl(event.target.dataset.src);
+                player.loadVideoByUrl({mediaContentUrl: event.target.dataset.src});
             }
         });
-		// div snippet-ytb-lazy
-		
     </script>
 </body>
+
 </html>
