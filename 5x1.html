@@ -1,163 +1,189 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <style>
-        table {
-            border-collapse: collapse;
-            width: 50%;
-        }
-        th, td {
-            text-align: center;
-            padding: 4px;
-            font-size: 14px;
-        }
-        tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
-        .container{
-            text-align: center;
-        }
+      table {
+        border-collapse: collapse;
+        width: 50%;
+      }
+      th,
+      td {
+        text-align: center;
+        padding: 4px;
+        font-size: 14px;
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .container {
+        text-align: center;
+      }
     </style>
-</head>
-<body>
-<div class="container">
-    <h3>Cálculo de Folgas 5X1</h3>
-    <p>Digite a data da Última Folga</p>
-    <input type="date" id="start-date" class="form-control"> <p></p>
-    <div id="Calcular">
-        <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>&nbsp &nbsp &nbsp &nbsp &nbsp &nbsp
-        <a href="index.html" class="btn btn-secondary">Voltar</a>
+  </head>
+  <body><br>
+    <div class="container">
+      <h3>Cálculo de Folgas 6X2</h3>
+      <p>Digite a data da Última Folga</p>
+      <input type="date" id="start-date" class="form-control">
+      <p></p>
+      <div id="Calcular">
+        <button onclick="calculateDaysOff()" class="btn btn-primary">Calcular</button>
         <p></p>
-
         <p>Você está de Folga:</p>
         <table id="calendar" class="table"></table>
-    </div>
-</div>
-
-<script>
-		//inicio função calendario
-    function calculateDaysOff() {
-    const startDate = new Date(document.getElementById("start-date").value);
-    const daysOff = [];
-    let currentDate = new Date(startDate.getTime());
-    currentDate.setDate(currentDate.getDate() + 6);
-
-    while (currentDate.getFullYear() === startDate.getFullYear() && currentDate.getMonth() <= 11) {
-         currentDate.setDate(currentDate.getDate() + 0);
-		daysOff.push(new Date(currentDate.getTime()));
+      </div>
+    </div><br>
+    <script>
+      // Função para calcular os dias de folga
+      function calculateDaysOff() {
+        const startDate = new Date(document.getElementById("start-date").value);
+        const startYear = startDate.getFullYear();
+        
+        // Generate the calendar according to the year of the entered date
+        generateCalendar(startYear);
+        
+        const daysOff = [];
+        let currentDate = new Date(startDate.getTime());
         currentDate.setDate(currentDate.getDate() + 6);
-    }
-
-    for (let i = 0; i < daysOff.length; i++) {
-        const dayOffCell = document.querySelector(`#calendar td[data-date="${daysOff[i].toISOString().slice(0, 10)}"]`);
-        if (dayOffCell) {
-            dayOffCell.style.backgroundColor = "#00FFFF";
+        
+        while (currentDate.getFullYear() === startYear && currentDate.getMonth() <= 11) {
+          daysOff.push(new Date(currentDate.getTime()));
+          currentDate.setDate(currentDate.getDate() + 0);
+          daysOff.push(new Date(currentDate.getTime()));
+          currentDate.setDate(currentDate.getDate() + 6);
         }
-    }
-
-    const monthsWithDaysOff = [...new Set(daysOff.map(date => date.getMonth()))];
-    for (let i = 0; i < months.length; i++) {
-        if (!monthsWithDaysOff.includes(i)) {
+        
+        for (let i = 0; i < daysOff.length; i++) {
+          const dayOffCell = document.querySelector(`#calendar td[data-date="${daysOff[i].toISOString().slice(0,10)}"]`);
+          
+          if (dayOffCell) {
+            dayOffCell.style.backgroundColor = "#00FFFF";
+          }
+        }
+        
+        const monthsWithDaysOff = [...new Set(daysOff.map(date => date.getMonth()))];
+        
+        for (let i = 0; i < months.length; i++) {
+          if (!monthsWithDaysOff.includes(i)) {
             const monthRows = document.querySelectorAll(`#calendar tr[data-month="${i}"]`);
             monthRows.forEach(row => row.style.display = "none");
+          }
         }
-    }
+        
+        const calculateButton = document.querySelector("#Calcular button");
+        calculateButton.textContent = "Recalcular";
+        
+        calculateButton.onclick = function () {
+          resetCalendar();
+          calculateDaysOff();
+        };
+        
+        markHolidays(startYear);
+      }
 
-    const calculateButton = document.querySelector("#Calcular button");
-    calculateButton.textContent = "Recalcular";
-    calculateButton.onclick = function() {
-        resetCalendar();
-        calculateDaysOff();
-    };
+      // Função para resetar o calendário
+      function resetCalendar() {
+        const dayOffCells = document.querySelectorAll(`#calendar td[data-date]`);
+        
+        dayOffCells.forEach(cell => {
+          cell.style.backgroundColor = "";
+          cell.style.fontWeight = "normal";
+          cell.style.color = "";
+        });
+        
+        const monthRows = document.querySelectorAll(`#calendar tr[data-month]`);
+        
+        monthRows.forEach(row => row.style.display = "");
+      }
 
-    markHolidays();
-}
+      // Função para gerar o calendário
+      function generateCalendar(year) {
+          const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+          const days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
+          const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+          
+          // Check if the year is a leap year
+          if (year % 400 === 0 || (year % 100 !== 0 && year % 4 === 0)) {
+              daysInMonth[1] = 29;
+          }
+          
+          let calendarHTML = "";
+          
+          for (let i = 0; i < months.length; i++) {
+            calendarHTML += `<tr data-month="${i}"><th colspan="7">${months[i]}</th></tr>`;
+            calendarHTML += `<tr data-month="${i}">`;
+            
+            for (let j = 0; j < days.length; j++) {
+              calendarHTML += `<td>${days[j]}</td>`;
+            }
+            
+            calendarHTML += "</tr><tr data-month=\"" + i + "\">";
+            
+            // Adiciona células vazias no início do mês
+            const firstDayOfMonth = new Date(year, i, 1).getDay();
+            
+            for (let j = 0; j < firstDayOfMonth; j++) {
+              calendarHTML += "<td></td>";
+            }
+            
+            for (let j = 1; j <= daysInMonth[i]; j++) {
+              const date = new Date(year, i, j);
+              calendarHTML += `<td data-date="${date.toISOString().slice(0,10)}">${j}</td>`;
+              
+              if ((j + firstDayOfMonth) % 7 === 0) {
+                calendarHTML += "</tr><tr data-month=\"" + i + "\">";
+              }
+            }
+            
+            // Adiciona células vazias no final do mês
+            const lastDayOfMonth = new Date(year, i + 1, 0).getDay();
+            
+            for (let j = lastDayOfMonth + 1; j < days.length; j++) {
+              calendarHTML += "<td></td>";
+            }
+            
+            calendarHTML += "</tr>";
+          }
+          
+          document.getElementById("calendar").innerHTML = calendarHTML;
+          
+          // Mark the holidays on the calendar
+          markHolidays(year);
+      }
 
-function resetCalendar() {
-    const dayOffCells = document.querySelectorAll(`#calendar td[data-date]`);
-    dayOffCells.forEach(cell => {
-        cell.style.backgroundColor = "";
-        cell.style.fontWeight = "normal";
-    });
-
-    const monthRows = document.querySelectorAll(`#calendar tr[data-month]`);
-    monthRows.forEach(row => row.style.display = "");
-}
-	//fim função calendario
-	
-//inicio funçõa feriado
- function markHolidays() {
-    const year = new Date().getFullYear();
-    const holidays = [
-        new Date(`${year}-01-01`), // Ano Novo
-        new Date(`${year}-02-20`), // Carnaval
-        new Date(`${year}-02-21`), // Carnaval
-		new Date(`${year}-02-22`), // Quarta-feira de Cinzas (ponto facultativo até as 14h) 
-        new Date(`${year}-04-07`), // Sexta-feira Santa
-        new Date(`${year}-04-09`), // Páscoa
-        new Date(`${year}-04-21`), // Tiradentes
-        new Date(`${year}-05-01`), // Dia do Trabalho
-        new Date(`${year}-06-08`), // Corpus Christi
-		new Date(`${year}-06-12`), // namorados
-        new Date(`${year}-09-07`), // Independência do Brasil
-        new Date(`${year}-10-12`), // Nossa Senhora Aparecida
-        new Date(`${year}-11-02`), // Finados
-        new Date(`${year}-11-15`), // Proclamação da República
-        new Date(`${year}-12-25`)  // Natal
-    ];
-
-    for (let i = 0; i < holidays.length; i++) {
-        const holidayCell = document.querySelector(`#calendar td[data-date="${holidays[i].toISOString().slice(0, 10)}"]`);
-        if (holidayCell) {
+      // Função para marcar os feriados
+      function markHolidays(year) {
+        const holidays = [
+          new Date(`${year}-01-01`), // Ano Novo
+          new Date(`${year}-02-20`), // Carnaval
+          new Date(`${year}-02-21`), // Carnaval
+          new Date(`${year}-02-22`), // Quarta-feira de Cinzas (ponto facultativo até as 14h)
+          new Date(`${year}-04-07`), // Sexta-feira Santa
+          new Date(`${year}-04-09`), // Páscoa
+          new Date(`${year}-04-21`), // Tiradentes
+          new Date(`${year}-05-01`), // Dia do Trabalho
+          new Date(`${year}-06-08`), // Corpus Christi
+          new Date(`${year}-06-12`), // namorados
+          new Date(`${year}-09-07`), // Independência do Brasil
+          new Date(`${year}-10-12`), // Nossa Senhora Aparecida
+          new Date(`${year}-11-02`), // Finados
+          new Date(`${year}-11-15`), // Proclamação da República
+          new Date(`${year}-12-25`)  // Natal
+        ];
+        
+        for (let i = 0; i < holidays.length; i++) {
+          const holidayCell = document.querySelector(`#calendar td[data-date="${holidays[i].toISOString().slice(0, 10)}"]`);
+          
+          if (holidayCell) {
             holidayCell.style.fontWeight = "bold";
             holidayCell.style.color = "red";
+          }
         }
-    }
-}
+      }
 
-window.addEventListener('load', markHolidays);
-//fim função feriado
-
-    //inicio função dias de folga
-
-    const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
-    const days = ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "Sáb"];
-    const daysInMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-    let calendarHTML = "";
-    for (let i = 0; i < months.length; i++) {
-        calendarHTML += `<tr data-month="${i}"><th colspan="7">${months[i]}</th></tr>`;
-        calendarHTML += `<tr data-month="${i}">`;
-        for (let j = 0; j < days.length; j++) {
-            calendarHTML += `<td>${days[j]}</td>`;
-        }
-        calendarHTML += "</tr><tr data-month=\"" + i + "\">";
-
-        // Add empty cells at the beginning of the month
-        const firstDayOfMonth = new Date(new Date().getFullYear(), i, 1).getDay();
-        for (let j = 0; j < firstDayOfMonth; j++) {
-            calendarHTML += "<td></td>";
-        }
-
-        for (let j = 1; j <= daysInMonth[i]; j++) {
-            const date = new Date(new Date().getFullYear(), i, j);
-            calendarHTML += `<td data-date="${date.toISOString().slice(0, 10)}">${j}</td>`;
-            if ((j + firstDayOfMonth) % 7 === 0) {
-                calendarHTML += "</tr><tr data-month=\"" + i + "\">";
-            }
-        }
-
-        // Add empty cells at the end of the month
-        const lastDayOfMonth = new Date(new Date().getFullYear(), i + 1, 0).getDay();
-        for (let j = lastDayOfMonth + 1; j < days.length; j++) {
-            calendarHTML += "<td></td>";
-        }
-
-        calendarHTML += "</tr>";
-    }
-    document.getElementById("calendar").innerHTML = calendarHTML;
-
-</script>
-<br>
-</body>
+      window.addEventListener('load', function() { markHolidays(new Date().getFullYear()); });
+    </script>
+  </body>
 </html>
+
