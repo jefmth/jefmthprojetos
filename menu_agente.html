@@ -5,11 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
 	<style>
-	 #botao {
-        width: 100%;
-        margin-bottom: 40px; /*espaçamento entre os botões*/
-       background-color: #008B8B; /*cores dos botões*/
-      }
+	.myBtn {
+  border: none;
+  color: white;
+  padding: 12px 32px;/* regula tamanho dos botões */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+  background-color: #008B8B;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 30px;/* espaçamento entre os botões */
+}
+.myBtn:hover {
+  background-color: #2F4F4F; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+}
 	  h1{
 	  text-align: center;
 	  }
@@ -31,9 +46,9 @@
 <body>
     <div class="container"><br>
         <h1>MENU</h1>
-        <button id="botao" class="btn btn-primary btn-lg" onclick="window.location.href='folga.html'">Agentes trabalhando</button>
-		<button id="botao" class="btn btn-primary btn-lg" onclick="window.location.href='imagem.html'">Subir Imagem</button>
-		<button id="botao" class="btn btn-primary btn-lg" onclick="reciclagem()">Reciclagem dos Agentes</button>
+        <button class="myBtn" onclick="window.location.href='folga.html'">Agentes trabalhando</button>
+		<button class="myBtn" onclick="window.location.href='imagem.html'">Subir Imagem</button>
+		<button  class="myBtn" onclick="reciclagem()">Reciclagem dos Agentes</button>
 
 		<div id="senhaDiv">
 			<label for="senha">Digite a senha:</label><br>
