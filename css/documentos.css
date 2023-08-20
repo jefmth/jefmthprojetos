@@ -1,9 +1,24 @@
 /* css corpo */
-        .btn-lg {
-            width: 100%;
-            margin-bottom: 70px;/* espaçamento entre os botões */
-			background-color: #008B8B; /* cores dos botões */
-        }
+     .myBtn {
+  border: none;
+  color: white;
+  padding: 12px 32px;/* regula tamanho dos botões */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+  background-color: #008B8B;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 30px;/* espaçamento entre os botões */
+}
+.myBtn:hover {
+  background-color: #2F4F4F; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+}
         .h3 {
             text-align: center;
         }
