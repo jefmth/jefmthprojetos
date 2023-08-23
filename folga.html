@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Trabalhando e Folga</title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+    <style>
+      body {
+        padding: 20px;
+      }
+      h1, h4 {
+        text-align: center;
+      }
+      .container {
+        margin-top: 20px;
+      }
+      ul {
+        list-style: none;
+        padding-left: 0;
+        font-size: 16px;
+        font-weight: bold;
+      }
+      #password-prompt,
+      #incorrect-password-alert {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        padding: 20px;
+		width: 80%;
+		height: 240px;
+      }
+	  #password-input{
+	  width: 100%;
+	  }
+	  .myBtn {
+  border: none;
+  color: white;
+  padding: 12px 32px;/* regula tamanho dos botões */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  
+  background-color: #008B8B;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 30px;/* espaçamento entre os botões */
+}
+.myBtn:hover {
+  background-color: #2F4F4F; /* Cor de fundo do botão */
+  color: white; /* Cor do texto do botão */
+}
+    </style>
+  </head>
+  <body>
+    <h1>Agentes</h1><br />
+	<p>Digite a data para verificar:<p>
+    <input type="date" id="start-date" class="form-control" /><br>
+    <button class="myBtn" onclick="showPasswordPrompt()">Verificar</button><br /><br />
+    <button class="myBtn" onclick="location.reload()">Recarregar</button>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-6">
+          <h2>Trabalhando:</h2>
+          <ul id="trabalhando"></ul>
+        </div>
+        <div class="col-xs-12 col-sm-6">
+          <h2>De folga:</h2>
+          <ul id="folga"></ul>
+        </div>
+      </div>
+    </div>
+    <div id="password-prompt">
+      <h4>Digite a Senha:</h4><br />
+      <input type="password" id="password-input" /><br /><br />
+      <button type="button" class="btn btn-outline-success" onclick="checkPassword()">Verificar</button>&nbsp &nbsp &nbsp &nbsp 
+      <button type="button" class="btn btn-outline-danger" onclick="hidePasswordPrompt()">Cancelar</button>
+    </div>
+    <div id="incorrect-password-alert">
+      Senha incorreta!<br /><br />
+      <button type="button" class="btn btn-outline-primary" onclick="hideIncorrectPasswordAlert()">OK</button>
+    </div>
+	<script src="./js/folga.js"></script>
+  </body>
+</html>
+
