@@ -1,5 +1,7 @@
 /* css corpo */
-       .container {
+		/* botão player */
+		
+        .container {
             text-align: center;
         }
 	/* fim css corpo */
@@ -27,8 +29,8 @@
         }
 
         .loader {
-            border: 16px solid #008B8B;
-            border-top: 16px solid blue;
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #008B8B;
             border-radius: 50%;
             width: 120px;
             height: 120px;
@@ -47,13 +49,13 @@
 		.loading-text {
             position: fixed;
             top: calc(27% + 70px);
-            left: 50%;
+            left: 48%;
             transform: translateX(-50%);
             color: white;
             font-size: 11px;
             z-index: 3;
 		}
-.myBtn {
+		.myBtn {
   border: none;
   color: white;
   padding: 12px 32px;/* regula tamanho dos botões */
