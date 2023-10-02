@@ -26,7 +26,10 @@ body {
 </style>
 <script>
 window.onload = function() {
-  setTimeout(function(){ window.location.href = "principal.html"; }, 6000);
+  setTimeout(function(){ 
+    document.getElementById('img').style.display = 'none'; 
+    window.location.href = "principal.html"; 
+  }, 6000);
 };
 </script>
 </head>
@@ -36,3 +39,4 @@ window.onload = function() {
 
 </body>
 </html>
+
