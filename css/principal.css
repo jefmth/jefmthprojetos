@@ -55,7 +55,7 @@
 		.loading-text {
             position: fixed;
             top: calc(27% + 70px);
-            left: 48%;
+            left: 50%;
             transform: translateX(-50%);
             color: white;
             font-size: 11px;
