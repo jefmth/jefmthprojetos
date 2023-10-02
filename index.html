@@ -27,7 +27,8 @@ body {
 <script>
 window.onload = function() {
   setTimeout(function(){ 
-    document.getElementById('img').style.display = 'none'; 
+    var img = document.getElementById('img');
+    img.parentNode.removeChild(img);
     window.location.href = "principal.html"; 
   }, 6000);
 };
