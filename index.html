@@ -13,24 +13,28 @@ body {
 #img {
   max-width: 100%;
   height: auto;
-  transform-origin: center;
+  transform: scale(0);
 }
 </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
 window.onload = function() {
   var img = document.getElementById('img');
+  var scale = 0;
+  var growing = true;
 
-  var animation = anime({
-    targets: img,
-    scale: [0, 2, 0],
-    duration: 5880,
-    easing: 'linear',
-    loop: false
-  });
+  var animation = setInterval(function() {
+    if (growing) {
+      scale += 0.01;
+      if (scale >= 2) growing = false;
+    } else {
+      scale -= 0.01;
+      if (scale <= 0) growing = true;
+    }
+    img.style.transform = 'scale(' + scale + ')';
+  }, 30);
 
   setTimeout(function(){ 
-    animation.pause();
+    clearInterval(animation);
     img.style.display = 'none';
     setTimeout(function(){ 
       window.location.href = "principal.html"; 
@@ -45,6 +49,7 @@ window.onload = function() {
 
 </body>
 </html>
+
 
 
 
