@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>App Gênesis</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="./css/principal.css">
+	
+<style>
+#myDiv {border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+}
+#closeButton {
+  position: absolute;
+  margin-left: 35%;
+  margin-top: -35%;
+  background-color: red;
+  color: white;
+  border-radius: 50%;
+}
+	#tex01{
+	text-align: center;
+	color: red;
+	weight: bold;
+   font-size: 20px;
+	}
+	#tex02{
+	text-align: center;
+	}
+	
+	#password-prompt,
+      #incorrect-password-alert {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        padding: 20px;
+		width: 80%;
+		height: 240px;
+      }
+	  #password-input{
+	  width: 100%;
+	  }
+</style>	
+   
+
+</head>
+<body>
+	 <div id="overlay" class="overlay"></div><!-- animação -->
+     <div id="loader" class="loader" style="display:none;"></div><!-- animação -->
+	 <div id="loading-text" class="loading-text" style="display:none;">Carregando...</div><!-- animação -->
+    <div class="container">
+        <h1>MENU</h1>
+        <button class="myBtn" onclick="myFunction01()">Cálculo de Folgas</button>
+		<button class="myBtn" onclick="showPasswordPrompt()"">Verificação de Imagens</button>
+		<button class="myBtn" onclick="myFunction03()">Agentes</button>
+		<!--<button class="myBtn" onclick="window.location.href='agente.html'">Agentes</button>-->
+		<!--<button class="myBtn" onclick="window.location.href='https://app.epays.com.br/login'">App RH</button>-->
+		<button class="myBtn" onclick="window.location.href='https://www.restituicao.receita.fazenda.gov.br/#/'">Consulta do IPR</button>
+		<button class="myBtn" onclick="myFunction05()">Reciclagem Vigilante</button>
+		<button class="myBtn" onclick="myFunction06()">Carta para o Sindicato</button>
+		
+		 <div id="password-prompt">
+      <h4>Digite a Senha:</h4><br />
+      <input type="password" id="password-input" /><br /><br />
+      <button type="button" class="btn btn-outline-success" onclick="checkPassword()">Verificar</button>&nbsp &nbsp &nbsp &nbsp 
+      <button type="button" class="btn btn-outline-danger" onclick="hidePasswordPrompt()">Cancelar</button>
+    </div>
+    <div id="incorrect-password-alert">
+      Senha incorreta!<br /><br />
+      <button type="button" class="btn btn-outline-primary" onclick="hideIncorrectPasswordAlert()">OK</button>
+    </div>
+		
+		<!--imagem hulk
+		<img id="img" src="https://drive.google.com/uc?export=view&id=1xMho_k4OGwRWFzKCVTzn6ve6_vqcuH_P" alt="Imagem"><br>
+		-->
+	   
+	   <!--div flutuante
+			<div id="myDiv">
+			<P id="tex01">ATENÇÃO<p> <br><h4 id="tex02">VERIFIQUE AS INFORMÇÕES SOBRE CARTA DO SINDICATO<h4>
+			<button id="closeButton">X</button>
+			</div>
+	   </div>
+			
+			fim div flutuante-->
+	<!--<script src="js/index.js">-->
+	<script>
+	 function myFunction01() {
+             document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none"; 
+                window.location.href = 'escalas.html';
+            }, 2000);
+        }
+ function myFunction02() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none";
+                window.location.href = 'galeria.html';
+            }, 2000);
+        }
+ function myFunction03() {
+             document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none"; 
+                window.location.href = 'menu_agente.html';
+            }, 2000);
+        }
+//imposto de renda não prescisa
+ function myFunction04() {
+            document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none";
+                window.location.href = 'galeria.html';
+            }, 2000);
+        }
+//fim imposto
+ function myFunction05() {
+             document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none";
+                window.location.href = 'reciclagem.html';
+            }, 2000);
+        }
+ function myFunction06() {
+             document.getElementById("overlay").style.display = "block";
+            document.getElementById("loader").style.display = "block";
+            document.getElementById("loading-text").style.display = "block";
+            setTimeout(function(){ 
+                document.getElementById("overlay").style.display = "none";
+                document.getElementById("loader").style.display = "none"; 
+                document.getElementById("loading-text").style.display = "none";
+                window.location.href = 'carta.html';
+            }, 2000);
+        }
+	// scritp da div flutuante	
+		document.getElementById("closeButton").onclick = function() {
+    document.getElementById("myDiv").style.display = "none";
+}
+
+// função senha
+function showPasswordPrompt() {
+    var passwordPrompt = document.getElementById('password-prompt');
+    passwordPrompt.style.display = 'block';
+}
+
+function hidePasswordPrompt() {
+    var passwordPrompt = document.getElementById('password-prompt');
+    passwordPrompt.style.display = 'none';
+}
+
+async function checkPassword() {
+    var passwordInput = document.getElementById('password-input');
+    const response = await fetch('https://sheetdb.io/api/v1/njvbx89551yf3');
+    const data = await response.json();
+    let found = false;
+    for (let i = 0; i < data.length; i++) {
+        if (data[i].password === passwordInput.value) {
+            found = true;
+            break;
+        }
+    }
+    if (found) {
+        hidePasswordPrompt();
+        window.location.href = "galeria.html"; // Redireciona para a página galeria.html
+    } else {
+        showIncorrectPasswordAlert();
+    }
+}
+
+function showIncorrectPasswordAlert() {
+    var incorrectPasswordAlert = document.getElementById('incorrect-password-alert');
+    incorrectPasswordAlert.style.display = 'block';
+}
+
+function hideIncorrectPasswordAlert() {
+    var incorrectPasswordAlert = document.getElementById('incorrect-password-alert');
+    incorrectPasswordAlert.style.display = 'none';
+}
+
+	</script>
+	<br>
+		
+</body>
+</html>
