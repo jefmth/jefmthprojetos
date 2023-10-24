@@ -10,6 +10,10 @@ function hidePasswordPrompt() {
 
 async function checkPassword() {
     var passwordInput = document.getElementById('password-input');
+    if (passwordInput.value === '') {
+        showIncorrectPasswordAlert();
+        return;
+    }
     const response = await fetch('https://sheetdb.io/api/v1/njvbx89551yf3');
     const data = await response.json();
     let found = false;
