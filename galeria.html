@@ -89,41 +89,26 @@
     // Função para buscar as fotos a partir dos links
     function buscarFotos() {
       const links = [
-        "https://drive.google.com/uc?export=view&id=16OAy4-z_2NqnjtAROCWyvpgb4iHOoqmt", //Erika
-        "https://drive.google.com/uc?export=view&id=1M_scE20RwbE2Le1LQ2JkLW7NLS2-oDOz",// Irmã Erika
-		"https://drive.google.com/uc?export=view&id=1gEof3BUYG5CW5GwQV_nTbJs5QQ92XE9s", // grupo Erika
-        "https://drive.google.com/uc?export=view&id=1wSttsCyGYxRzWeS_9Yt-Zx9jOGVK3QtC", // grupo coquinho
-        "https://drive.google.com/uc?export=view&id=1jZ7Wg3FBxyVMP1ZrQWl4qhomLTRr3kTX", // grupo coquinho
-		"https://drive.google.com/uc?export=view&id=1OnRcWxW5G9z-ylDZCl-_e8VwlSkiuaFw", //loira coquinho
-	      "https://drive.google.com/uc?export=view&id=1IKERl9tKcGRJVWXR5qNlwRQi1ZKQBxt3",
-        "https://drive.google.com/uc?export=view&id=1_8uXnGZpXOjMoIOMn0bKKHCwmrXYXdgn",//5
-		"https://drive.google.com/uc?export=view&id=1ChZ4oJQ-41kqoS_ERdTkQB_7k__YKIt0", //6
-		"https://drive.google.com/uc?export=view&id=1Dj9XEb2GXzjMQcxSF_A24lzMSf_xhTio",//centauro
-		"https://drive.google.com/uc?export=view&id=1Dd2jZBH4jf0qq7Be9l9DTJCFPdOm2xAc",//centauro
-		"https://drive.google.com/uc?export=view&id=1PTs5XKiSpoBMYq0WnNhnQPumBjbxUAxo",//Yucon
-		"https://drive.google.com/uc?export=view&id=1qJearDyeIluKmdKEoFrO_IOe6-EC_6lK", //amigo erika
-		"https://drive.google.com/uc?export=view&id=1hwwpQcYUuh-nrRpjAL7BDNNddwKjSdBv",//centauro
-		"https://drive.google.com/uc?export=view&id=1XK3GfrLZb9D-msLng_ugsJpo_kdTcTgk",
-		"https://drive.google.com/uc?export=view&id=15IbN0eeSgTuTq2Cn9dG1Ji25Zv76LgFv",
-        "https://drive.google.com/uc?export=view&id=1CjSgkvnRnAbBbiX-T7ZxU5s6TgVaSwbw",	//7
-        "https://drive.google.com/uc?export=view&id=1Ct0XevHiYCpLGJc4pvoliH7RG6ebZCro",		// Link 4
-        "https://drive.google.com/uc?export=view&id=1V-Ova_7MtAFZx7wsDSQW3MV7hppHW2Bq", // Link 5
-        "https://drive.google.com/uc?export=view&id=1j4GOnulic2ZGzhbq5-GXDnOOk5iDxgNo", // Link 6
-        "https://drive.google.com/uc?export=view&id=1nbOqMMAo7SeYTldQmZYCzjU0TsyB2e2O", // Link 7
-        "https://drive.google.com/uc?export=view&id=1sJ2RUi88DSBapM1gIplyZKmM3JPeC39Z", // Link 8
-        "https://drive.google.com/uc?export=view&id=1bQHtI8bAgaXRMmMpTXlU8uw4i4R_-Wqg", // Link 9
-        "https://drive.google.com/uc?export=view&id=1B_nX3HWW8NorRIkc4Fw62S7qDcTYhKi2", // Link 10
-        "https://drive.google.com/uc?export=view&id=1DQo04K_ABpLvMHQeWCuLM3ySf6HQOZNz",
-        "https://drive.google.com/uc?export=view&id=1N9rOXld3EVKHBSjzZTvz1kwmwL6A6g01",
-        "https://drive.google.com/uc?export=view&id=1p6QCeeAdfbwic6jEmXP9hi0AzP7Pl_aR",
-		"https://drive.google.com/uc?export=view&id=1i6CcHZgYJA8HGJvXMdZnXPwS7pIACBVq",//03
-		"https://drive.google.com/uc?export=view&id=1_wmpVoSBiNWBGrkChDIu4-1psQOEd6Ja",//04
+       "https://drive.google.com/uc?export=view&id=1_gR_Q0zqrC3mPKZcRUDD78lMbAeTFBbl", //Erika
+        "https://drive.google.com/uc?export=view&id=1IVAted4li-t_tLw-b8Bq9JJ10MU2XaTI",// Irmã Erika
+		"https://drive.google.com/uc?export=view&id=1pjXzNUmbJJfF7Ax38Ea3V7v0-e9pd35q", // Maria Erika
+        "https://drive.google.com/uc?export=view&id=1gbBSAjwWMSVNKix52KXUqIo3BK6CQCAI", // Coquinho
+        "https://drive.google.com/uc?export=view&id=12HMLiW6Ct0gnR-Xpjr9Gm4gruNrN6oEo", // dentussa coquinho
+		"https://drive.google.com/uc?export=view&id=1lwFOPvutHTaw1ptgDQkhke91ggZTReoh", //loira coquinho
+		"https://drive.google.com/uc?export=view&id=1JJMPijfq3x-nZr-QQXTqvM1R3DQB_7Gl",// nota falsa
+        "https://drive.google.com/uc?export=view&id=1lUAvMSPX-LF8FeGLnx1ij7OdNchBrJv2",//qru c&a
+		"https://drive.google.com/uc?export=view&id=1JKSeQQwRQBxspQWhL3ZuUaHrr2lu9hNK", //casal centauro
+		"https://drive.google.com/uc?export=view&id=1JLyYhoBVv1EqjOTh0Q1Opx26VFv3MDhX",//casal centauro
+		"https://drive.google.com/uc?export=view&id=1IqxrolrpliNLfpWb08h019KuKXvtUpVF",//Mmartan
+		"https://drive.google.com/uc?export=view&id=1XKna5LN9QQ4HqBsRogRSZQlvuk2jskCn",//dupla da Yucon
+		"https://drive.google.com/uc?export=view&id=13mZ0JzryBJNCU4FLIH_DBGfMiWFhBzGG", //amigo erika
+		<!--"https://drive.google.com/uc?export=view&id=1hwwpQcYUuh-nrRpjAL7BDNNddwKjSdBv",//centauro-->
+		
 		"QRU costuma agir após fechamento dos Shoppings, invadindo quiosques e lojas. ",
-		"https://drive.google.com/uc?export=view&id=1wKXUbau2WMZ1oTpJhUueGadjnUcPz0Gh",//invasor de quiosque
+		"https://drive.google.com/uc?export=view&id=1sAz5HxPk6we1Yv8Wf_Tt3aWWsKMPsYAe",//invasor de quiosque
 		"",
         "",
       ];
-
 			  const galeria = document.getElementById("galeria");
 			  const imagemAmpliada = document.getElementById("imagemAmpliada");
 			  const imagemAmpliadaImg = document.querySelector(".imagem-ampliada img");
