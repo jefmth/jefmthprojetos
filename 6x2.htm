@@ -14,10 +14,11 @@
         }
 
         .calendar .day {
-            padding: 10px;
+            padding: 8px;
             text-align: center;
             border: 1px solid #ccc;
             border-radius: 4px;
+            font-size: 12px;
         }
 
         .calendar .off-day {
@@ -26,31 +27,48 @@
 
         .calendar .header {
             font-weight: bold;
+            background-color: #f8f9fa;
         }
+
         .myBtn {
-  border: none;
-  color: white;
-  padding: 12px 32px;/* regula tamanho dos botões */
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  transition-duration: 0.4s;
-  cursor: pointer;
-  
-  background-color: #008B8B;
-  border-radius: 5px;
-  width: 100%;
-  margin-bottom: 30px;/* espaçamento entre os botões */
-}
-.myBtn:hover {
-  background-color: #2F4F4F; /* Cor de fundo do botão */
-  color: white; /* Cor do texto do botão */
-}
+            border: none;
+            color: white;
+            padding: 12px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            background-color: #008B8B;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .myBtn:hover {
+            background-color: #2F4F4F; /* Cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+        }
+
+        @media (max-width: 576px) {
+            .calendar .day {
+                font-size: 10px;
+                padding: 5px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h3 {
+                font-size: 16px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <div class="container-fluid mt-4">
         <h1 class="text-center">Escala de Trabalho - 6x2</h1>
         <form id="formulario" class="mb-4">
             <div class="mb-3">
@@ -86,6 +104,7 @@
             for (let mes = 0; mes < 12; mes++) {
                 const tituloMes = document.createElement('h3');
                 tituloMes.textContent = `${meses[mes]} ${ano}`;
+                tituloMes.className = "text-center";
                 calendarioDiv.appendChild(tituloMes);
 
                 const calendario = document.createElement('div');
