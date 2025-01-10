@@ -14,11 +14,11 @@
         }
 
         .calendar .day {
-            padding: 8px;
+            padding: 10px;
             text-align: center;
             border: 1px solid #ccc;
             border-radius: 4px;
-            font-size: 12px;
+            font-size: 0.9rem;
         }
 
         .calendar .off-day {
@@ -33,17 +33,18 @@
         .myBtn {
             border: none;
             color: white;
-            padding: 12px 20px;
+            padding: 12px 32px; /* regula tamanho dos botões */
             text-align: center;
             text-decoration: none;
             display: inline-block;
             font-size: 16px;
             transition-duration: 0.4s;
             cursor: pointer;
+
             background-color: #008B8B;
             border-radius: 5px;
             width: 100%;
-            margin-bottom: 20px;
+            margin-bottom: 30px; /* espaçamento entre os botões */
         }
 
         .myBtn:hover {
@@ -51,24 +52,16 @@
             color: white; /* Cor do texto do botão */
         }
 
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
             .calendar .day {
-                font-size: 10px;
-                padding: 5px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h3 {
-                font-size: 16px;
+                padding: 8px;
+                font-size: 0.75rem;
             }
         }
     </style>
 </head>
 <body>
-    <div class="container-fluid mt-4">
+    <div class="container mt-5">
         <h1 class="text-center">Escala de Trabalho - 6x2</h1>
         <form id="formulario" class="mb-4">
             <div class="mb-3">
@@ -91,8 +84,9 @@
             }
 
             const ultimoDiaFolga = new Date(dataInicio);
-            const ano = ultimoDiaFolga.getFullYear();
+            ultimoDiaFolga.setDate(ultimoDiaFolga.getDate() + 1); // Conta mais 1 dia no início da folga
 
+            const ano = ultimoDiaFolga.getFullYear();
             const calendarioDiv = document.getElementById('calendario');
             calendarioDiv.innerHTML = ''; // Limpa o calendário anterior
 
@@ -104,7 +98,6 @@
             for (let mes = 0; mes < 12; mes++) {
                 const tituloMes = document.createElement('h3');
                 tituloMes.textContent = `${meses[mes]} ${ano}`;
-                tituloMes.className = "text-center";
                 calendarioDiv.appendChild(tituloMes);
 
                 const calendario = document.createElement('div');
