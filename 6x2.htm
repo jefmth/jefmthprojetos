@@ -25,6 +25,11 @@
             background-color: #00FFFF; /* Cor para os dias de folga */
         }
 
+        .calendar .holiday {
+            color: red; /* Texto em vermelho para feriados */
+            font-weight: bold;
+        }
+
         .calendar .header {
             font-weight: bold;
             background-color: #f8f9fa;
@@ -95,6 +100,19 @@
                 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
             ];
 
+            const feriados = [
+                { mes: 0, dia: 1, nome: 'Confraternização Universal' },
+                { mes: 3, dia: 18, nome: 'Paixão de Cristo' },
+                { mes: 3, dia: 21, nome: 'Tiradentes' },
+                { mes: 4, dia: 1, nome: 'Dia Mundial do Trabalho' },
+                { mes: 8, dia: 7, nome: 'Independência do Brasil' },
+                { mes: 9, dia: 12, nome: 'Nossa Senhora Aparecida' },
+                { mes: 10, dia: 2, nome: 'Finados' },
+                { mes: 10, dia: 15, nome: 'Proclamação da República' },
+                { mes: 10, dia: 20, nome: 'Consciência Negra' },
+                { mes: 11, dia: 25, nome: 'Natal' },
+            ];
+
             for (let mes = 0; mes < 12; mes++) {
                 const tituloMes = document.createElement('h3');
                 tituloMes.textContent = `${meses[mes]} ${ano}`;
@@ -124,6 +142,12 @@
                     diaDiv.className = 'day';
                     diaDiv.dataset.data = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
                     diaDiv.textContent = dia;
+
+                    const isFeriado = feriados.some(feriado => feriado.mes === mes && feriado.dia === dia);
+                    if (isFeriado) {
+                        diaDiv.classList.add('holiday');
+                    }
+
                     calendario.appendChild(diaDiv);
                 }
 
