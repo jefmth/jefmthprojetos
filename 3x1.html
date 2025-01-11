@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Escala de Trabalho</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 5px;
+            margin-bottom: 20px;
+        }
+
+        .calendar .day {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        .calendar .off-day {
+            background-color: #00FFFF; /* Cor para os dias de folga */
+        }
+
+        .calendar .holiday {
+            color: red; /* Texto em vermelho para feriados */
+            font-weight: bold;
+        }
+
+        .calendar .selected-day {
+            background-color: #00FFFF; /* Destaque para a data digitada */
+            font-weight: bold;
+        }
+
+        .calendar .header {
+            font-weight: bold;
+            background-color: #f8f9fa;
+        }
+
+        .myBtn {
+            border: none;
+            color: white;
+            padding: 12px 32px; /* regula tamanho dos botões */
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+
+            background-color: #008B8B;
+            border-radius: 5px;
+            width: 100%;
+            margin-bottom: 30px; /* espaçamento entre os botões */
+        }
+
+        .myBtn:hover {
+            background-color: #2F4F4F; /* Cor de fundo do botão */
+            color: white; /* Cor do texto do botão */
+        }
+
+        @media (max-width: 768px) {
+            .calendar .day {
+                padding: 8px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-center">Escala de Trabalho - 3x1</h1>
+        <form id="formulario" class="mb-4">
+            <div class="mb-3">
+                <label for="dataInicio" class="form-label">Digite seu Último Dia de Folga:</label>
+                <input type="date" id="dataInicio" class="form-control" required>
+            </div>
+            <button type="button" class="myBtn" onclick="montarCalendario()">Calcular</button>
+        </form>
+
+        <div id="calendario" class="mt-4"></div>
+    </div>
+
+    <script>
+        function montarCalendario() {
+            const dataInicio = document.getElementById('dataInicio').value;
+
+            if (!dataInicio) {
+                alert('Por favor, insira uma data válida!');
+                return;
+            }
+
+            const ultimoDiaFolga = new Date(dataInicio);
+            ultimoDiaFolga.setDate(ultimoDiaFolga.getDate() + 1); // Conta mais 1 dia no início da folga
+
+            const ano = ultimoDiaFolga.getFullYear();
+            const calendarioDiv = document.getElementById('calendario');
+            calendarioDiv.innerHTML = ''; // Limpa o calendário anterior
+
+            const meses = [
+                'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
+                'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
+            ];
+
+            const feriados = [
+                { mes: 0, dia: 1, nome: 'Confraternização Universal' },
+                { mes: 3, dia: 18, nome: 'Paixão de Cristo' },
+                { mes: 3, dia: 21, nome: 'Tiradentes' },
+                { mes: 4, dia: 1, nome: 'Dia Mundial do Trabalho' },
+                { mes: 8, dia: 7, nome: 'Independência do Brasil' },
+                { mes: 9, dia: 12, nome: 'Nossa Senhora Aparecida' },
+                { mes: 10, dia: 2, nome: 'Finados' },
+                { mes: 10, dia: 15, nome: 'Proclamação da República' },
+                { mes: 10, dia: 20, nome: 'Consciência Negra' },
+                { mes: 11, dia: 25, nome: 'Natal' },
+            ];
+
+            for (let mes = 0; mes < 12; mes++) {
+                const tituloMes = document.createElement('h3');
+                tituloMes.textContent = `${meses[mes]} ${ano}`;
+                calendarioDiv.appendChild(tituloMes);
+
+                const calendario = document.createElement('div');
+                calendario.className = 'calendar';
+
+                ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'].forEach(diaSemana => {
+                    const header = document.createElement('div');
+                    header.textContent = diaSemana;
+                    header.className = 'day header';
+                    calendario.appendChild(header);
+                });
+
+                const primeiroDia = new Date(ano, mes, 1).getDay();
+                const diasNoMes = new Date(ano, mes + 1, 0).getDate();
+
+                for (let i = 0; i < primeiroDia; i++) {
+                    const vazio = document.createElement('div');
+                    vazio.className = 'day';
+                    calendario.appendChild(vazio);
+                }
+
+                for (let dia = 1; dia <= diasNoMes; dia++) {
+                    const diaDiv = document.createElement('div');
+                    diaDiv.className = 'day';
+                    diaDiv.dataset.data = `${ano}-${String(mes + 1).padStart(2, '0')}-${String(dia).padStart(2, '0')}`;
+                    diaDiv.textContent = dia;
+
+                    const isFeriado = feriados.some(feriado => feriado.mes === mes && feriado.dia === dia);
+                    if (isFeriado) {
+                        diaDiv.classList.add('holiday');
+                    }
+
+                    if (diaDiv.dataset.data === dataInicio) {
+                        diaDiv.classList.add('selected-day');
+                    }
+
+                    calendario.appendChild(diaDiv);
+                }
+
+                calendarioDiv.appendChild(calendario);
+            }
+
+            marcarDiasDeFolga(ultimoDiaFolga);
+        }
+
+        function marcarDiasDeFolga(ultimoDiaFolga) {
+            const diasTrabalho = 3;
+            const diasFolga = 1;
+            let cicloDias = 0;
+
+            const diasDivs = document.querySelectorAll('.calendar .day');
+            diasDivs.forEach(diaDiv => {
+                const dataAtual = new Date(diaDiv.dataset.data);
+
+                if (!isNaN(dataAtual) && dataAtual >= ultimoDiaFolga) {
+                    cicloDias++;
+
+                    if (cicloDias > diasTrabalho) {
+                        diaDiv.classList.add('off-day');
+                        if (cicloDias === diasTrabalho + diasFolga) {
+                            cicloDias = 0; // Reinicia o ciclo após 6x2
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
