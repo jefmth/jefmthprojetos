@@ -30,6 +30,11 @@
             font-weight: bold;
         }
 
+        .calendar .selected-day {
+            background-color: #00FFFF; /* Destaque para a data digitada */
+            font-weight: bold;
+        }
+
         .calendar .header {
             font-weight: bold;
             background-color: #f8f9fa;
@@ -146,6 +151,10 @@
                     const isFeriado = feriados.some(feriado => feriado.mes === mes && feriado.dia === dia);
                     if (isFeriado) {
                         diaDiv.classList.add('holiday');
+                    }
+
+                    if (diaDiv.dataset.data === dataInicio) {
+                        diaDiv.classList.add('selected-day');
                     }
 
                     calendario.appendChild(diaDiv);
