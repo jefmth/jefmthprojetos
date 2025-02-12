@@ -67,31 +67,28 @@
     </style>
 </head>
 <body><br>
-    <p id="p1">SOM</P
+    <p id="p1">SOM</p>
      <br>
 	<div id="player"></div><br>
 	<p id="click">Click na Música para Começar</p>
  <ul id="video-list"> <br>
   <li id="video_inicial"><a href="#" data-video-id="Z_Frz977Ss4">Vídeo Inicial</a></li>
   <li><a href="#" data-video-id="CHekNnySAfM">Bob Marley - Is This Love</a>
-  <button id="mais" class="btn btn-link" onclick="window.location.href='artistas/Bob Marley.html'">Mais</button></li>
+  <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bob Marley.html', '_blank')">Mais</button></li>
   <li><a href="#" data-video-id="MhWzW1eFEbQ">Paralamas - Uma Brasileira</a>
-  <button id="mais" class="btn btn-link" onclick="window.location.href='artistas/Paralamas do Sucesso.html'">Mais</button></li>
+  <button id="mais" class="btn btn-link" onclick="window.open('artistas/Paralamas do Sucesso.html', '_blank')">Mais</button></li>
   <li><a href="#" data-video-id="sfixHYBWaiU">Legião Urbana - Pais e Filhos</a>
-  <button id="mais" class="btn btn-link" onclick="window.location.href='artistas/Legião Urbana.html'">Mais</button></li>
-  <li><a href="#" data-video-id="A5Oz9pIR5Bw">Skank - Garota Nacional</a>
-  <button id="mais" class="btn btn-link" onclick="window.location.href='artistas/Skank.html'">Mais</button></li>
-      
+  <button id="mais" class="btn btn-link" onclick="window.open('artistas/Legião Urbana.html', '_blank')">Mais</button></li>
+  <li><a href="#" data-video-id="YobLtqIldHI" data-start="1823">Clássicos de Bruno e Marrone</a>
+  <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bruno e Marrone.html', '_blank')">Mais</button></li>
 </ul>
 
 <script>
-  // Load the IFrame Player API code asynchronously.
   var tag = document.createElement('script');
   tag.src = "https://www.youtube.com/iframe_api";
   var firstScriptTag = document.getElementsByTagName('script')[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
-  // Create an <iframe> (and YouTube player) after the API code downloads.
   var player;
   function onYouTubeIframeAPIReady() {
     player = new YT.Player('player', {
@@ -104,17 +101,16 @@
     });
   }
 
-  // Add event listeners to the video links
   var videoLinks = document.querySelectorAll('#video-list a');
-  for (var i = 0; i < videoLinks.length; i++) {
-    videoLinks[i].addEventListener('click', function(e) {
+  videoLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
       e.preventDefault();
       var videoId = this.getAttribute('data-video-id');
-      player.loadVideoById(videoId);
+      var startTime = this.getAttribute('data-start') || 0;
+      player.loadVideoById({videoId: videoId, startSeconds: startTime});
     });
-  }
+  });
 
-  // Play the next video when the current video ends
   function onPlayerStateChange(event) {
     if (event.data == YT.PlayerState.ENDED) {
       var currentVideoId = player.getVideoData().video_id;
@@ -127,7 +123,8 @@
       }
       if (nextVideoIndex >= 0 && nextVideoIndex < videoLinks.length) {
         var nextVideoId = videoLinks[nextVideoIndex].getAttribute('data-video-id');
-        player.loadVideoById(nextVideoId);
+        var nextStartTime = videoLinks[nextVideoIndex].getAttribute('data-start') || 0;
+        player.loadVideoById({videoId: nextVideoId, startSeconds: nextStartTime});
       }
     }
   }
