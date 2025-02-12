@@ -1,143 +1,144 @@
- <html lang="pt-BR">
- <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
-
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-     <title>Som</title>
- 	<style>
- 	@import url('https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap');
-         #videoList {
-             list-style: none;
-             padding: 0;	
-         }
-        a {
-             text-decoration: none;
-             color: black;
-         }
- 	 
- 		#historia p {
-     text-align: justify;
-      }
- 	 iframe{
- 	 width:96%;
- 	 height: 250px;
- 	 margin-left: 2%;
- 	 margin-bottom: 3%;
- 	 }
- 	#p1{
- 	margin-bottom: 3%;
- 	text-align: center;
- 	font-family: 'Zen Tokyo Zoo', cursive;
- 	font-size: 80px;
- 	}
- 	  li{
- 	  margin-bottom: 3%;
- 	  list-style: none;
- 	  border: 1px solid #ddd;
- 	  height: 30px;
- 	  padding-left: 20px; /* movendo texto dentro da li */
- 	  }
- 	  #video_inicial{
- 	  display: none;
- 	  }
- 	  ul{
- 	  margin-left: -4.5%;
- 	  margin-right: 2%;
- 	  }
- 	  .btn-link{
- 	 text-decoration: none;
- 	font-family: 'Roboto', sans-serif;
- 	padding-top: 2px;
- 	}
- 	#mais{
- 	float: right;
- 	}
- 	#click{
- 		text-align: center;
- 		font-family: 'Roboto', sans-serif;
- 		 font-weight: bold;
- 		 font-size: 20px;
- 		}
-     </style>
- </head>
- <body><br>
-     <p id="p1">SOM</p>
-      <br>
- 	<div id="player"></div><br>
- 	<p id="click">Click na Música para Começar</p>
-  <ul id="video-list"> <br>
-   <li id="video_inicial"><a href="#" data-video-id="Z_Frz977Ss4">Vídeo Inicial</a></li>
-   <li><a href="#" class="video-link" data-video-id="Pzt3JHNO28PWLNzM">Bob Marley - Is This Love</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bob Marley.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="o1QP2IHsgPk">Cidade Negra - A Estrada</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Cidade Negra.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="MhWzW1eFEbQ">Paralamas - Uma Brasileira</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Paralamas do Sucesso.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="sfixHYBWaiU">Legião Urbana - Pais e Filhos</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Legião Urbana.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="2m-vthh7s8U">Skank - Acima do Sol</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Skank.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="YobLtqIldHI">Clássicos de Bruno e Marrone</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bruno e Marrone.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="DvHmQBo4gbE">Clássicos Chitãozinho e Xororó</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Chitãozinho e Xororó.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="07GHdlabCtg">Clássicos Michael Jackson</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/Michael Jackson.html', '_blank')">Mais</button></li>
-   <li><a href="#" data-video-id="6pKJRAOqAGw">Clássicos O Rappa</a>
-   <button id="mais" class="btn btn-link" onclick="window.open('artistas/O Rappa.html', '_blank')">Mais</button></li>
- </ul>
-
- <script>
-   var tag = document.createElement('script');
-   tag.src = "https://www.youtube.com/iframe_api";
-   var firstScriptTag = document.getElementsByTagName('script')[0];
-   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-   var player;
-   function onYouTubeIframeAPIReady() {
-     player = new YT.Player('player', {
-       height: '390',
-       width: '640',
-       videoId: 'Z_Frz977Ss4',
-       events: {
-         'onStateChange': onPlayerStateChange
+<html lang="pt-BR">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+ 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <title>Som</title>
+    <style>
+    @import url('https://fonts.googleapis.com/css2?family=Zen+Tokyo+Zoo&display=swap');
+          #videoList {
+              list-style: none;
+              padding: 0;	
+          }
+         a {
+              text-decoration: none;
+              color: black;
+          }
+     
+      #historia p {
+      text-align: justify;
        }
-     });
-   }
-
-   var videoLinks = document.querySelectorAll('#video-list a');
-   videoLinks.forEach(link => {
-     link.addEventListener('click', function(e) {
-       e.preventDefault();
-       var videoId = this.getAttribute('data-video-id');
-       var startTime = this.getAttribute('data-start') || 0;
-       player.loadVideoById({videoId: videoId, startSeconds: startTime});
-     });
-   });
-
-   function onPlayerStateChange(event) {
-     if (event.data == YT.PlayerState.ENDED) {
-       var currentVideoId = player.getVideoData().video_id;
-       var nextVideoIndex = -1;
-       for (var i = 0; i < videoLinks.length; i++) {
-         if (videoLinks[i].getAttribute('data-video-id') == currentVideoId) {
-           nextVideoIndex = i + 1;
-           break;
-         }
-       }
-       if (nextVideoIndex >= 0 && nextVideoIndex < videoLinks.length) {
-         var nextVideoId = videoLinks[nextVideoIndex].getAttribute('data-video-id');
-         var nextStartTime = videoLinks[nextVideoIndex].getAttribute('data-start') || 0;
-         player.loadVideoById({videoId: nextVideoId, startSeconds: nextStartTime});
-       }
+     iframe{
+     width:96%;
+     height: 250px;
+     margin-left: 2%;
+     margin-bottom: 3%;
      }
-   }
- </script>
- </body>
- </html>
+    #p1{
+    margin-bottom: 3%;
+    text-align: center;
+    font-family: 'Zen Tokyo Zoo', cursive;
+    font-size: 80px;
+    }
+      li{
+      margin-bottom: 3%;
+      list-style: none;
+      border: 1px solid #ddd;
+      height: 30px;
+      padding-left: 20px; /* movendo texto dentro da li */
+      }
+      #video_inicial{
+      display: none;
+      }
+      ul{
+      margin-left: -4.5%;
+      margin-right: 2%;
+      }
+      .btn-link{
+     text-decoration: none;
+    font-family: 'Roboto', sans-serif;
+    padding-top: 2px;
+    }
+    #mais{
+    float: right;
+    }
+    #click{
+      text-align: center;
+      font-family: 'Roboto', sans-serif;
+       font-weight: bold;
+       font-size: 20px;
+      }
+      </style>
+  </head>
+  <body><br>
+      <p id="p1">SOM</p>
+       <br>
+    <div id="player"></div><br>
+    <p id="click">Click na Música para Começar</p>
+   <ul id="video-list"> <br>
+    <li id="video_inicial"><a href="#" data-video-id="Z_Frz977Ss4">Vídeo Inicial</a></li>
+    <li><a href="#" data-video-id="CHekNnySAfM">Bob Marley - Is This Love</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bob Marley.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="o1QP2IHsgPk">Cidade Negra - A Estrada</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Cidade Negra.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="MhWzW1eFEbQ">Paralamas - Uma Brasileira</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Paralamas do Sucesso.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="sfixHYBWaiU">Legião Urbana - Pais e Filhos</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Legião Urbana.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="2m-vthh7s8U">Skank - Acima do Sol</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Skank.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="YobLtqIldHI">Clássicos de Bruno e Marrone</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Bruno e Marrone.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="DvHmQBo4gbE">Clássicos Chitãozinho e Xororó</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Chitãozinho e Xororó.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="07GHdlabCtg">Clássicos Michael Jackson</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/Michael Jackson.html', '_blank')">Mais</button></li>
+    <li><a href="#" data-video-id="6pKJRAOqAGw">Clássicos O Rappa</a>
+    <button id="mais" class="btn btn-link" onclick="window.open('artistas/O Rappa.html', '_blank')">Mais</button></li>
+  </ul>
+ 
+  <script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+ 
+    var player;
+    function onYouTubeIframeAPIReady() {
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: 'Z_Frz977Ss4',
+        events: {
+          'onStateChange': onPlayerStateChange
+        }
+      });
+    }
+ 
+    var videoLinks = document.querySelectorAll('#video-list a');
+    videoLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var videoId = this.getAttribute('data-video-id');
+        var startTime = this.getAttribute('data-start') || 0;
+        player.loadVideoById({videoId: videoId, startSeconds: startTime});
+      });
+    });
+ 
+    function onPlayerStateChange(event) {
+      if (event.data == YT.PlayerState.ENDED) {
+        var currentVideoId = player.getVideoData().video_id;
+        var nextVideoIndex = -1;
+        for (var i = 0; i < videoLinks.length; i++) {
+          if (videoLinks[i].getAttribute('data-video-id') == currentVideoId) {
+            nextVideoIndex = i + 1;
+            break;
+          }
+        }
+        if (nextVideoIndex >= 0 && nextVideoIndex < videoLinks.length) {
+          var nextVideoId = videoLinks[nextVideoIndex].getAttribute('data-video-id');
+          var nextStartTime = videoLinks[nextVideoIndex].getAttribute('data-start') || 0;
+          player.loadVideoById({videoId: nextVideoId, startSeconds: nextStartTime});
+        }
+      }
+    }
+  </script>
+  </body>
+  </html>
+ 
