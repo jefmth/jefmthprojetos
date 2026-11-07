@@ -5,204 +5,204 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 	<meta name="theme-color" content="#008F83">
-	<title>Meus Apps | Central de Downloads</title>
+	<title>Meus Apps</title>
 	<style>
 	:root {
-		--brand: #008F83;
-		--dark: #006e65;
-		--bg: #f2f8f7;
-		--ink: #17312e;
-		--muted: #637b78
+		--primary: #008F83;
+		--deep: #006e65;
+		--bg: #f3f7f7;
+		--ink: #183333;
+		--muted: #637677;
+		--border: #deebea
 	}
 	
 	* {
 		box-sizing: border-box
 	}
 	
-	html {
-		scroll-behavior: smooth
-	}
-	
 	body {
 		margin: 0;
 		background: var(--bg);
-		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-		color: var(--ink)
+		color: var(--ink);
+		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif
 	}
 	
 	header {
-		background: linear-gradient(135deg, #008F83, #006c65);
+		background: linear-gradient(135deg, var(--primary), var(--deep));
 		color: white;
-		padding: calc(28px + env(safe-area-inset-top)) 20px 38px;
-		border-radius: 0 0 28px 28px;
-		box-shadow: 0 8px 24px #006e6520
+		padding: calc(25px + env(safe-area-inset-top)) 20px 30px;
+		border-radius: 0 0 26px 26px;
+		box-shadow: 0 6px 20px #006e6526
 	}
 	
-	.head {
-		max-width: 850px;
+	.wrap {
+		width: min(100% - 32px, 620px);
 		margin: auto
 	}
 	
-	.eyebrow {
-		font-size: .82rem;
-		letter-spacing: .13em;
-		text-transform: uppercase;
-		opacity: .85;
-		font-weight: 700
+	header .wrap {
+		display: flex;
+		align-items: center;
+		gap: 14px
+	}
+	
+	.brand {
+		width: 54px;
+		height: 54px;
+		display: grid;
+		place-items: center;
+		background: #ffffff24;
+		border: 1px solid #ffffff60;
+		border-radius: 17px;
+		font-size: 29px
 	}
 	
 	h1 {
-		font-size: 2rem;
-		margin: 10px 0 6px
+		font-size: 1.65rem;
+		margin: 0 0 4px
 	}
 	
 	header p {
 		margin: 0;
-		opacity: .9;
-		line-height: 1.5
+		color: #e0f6f3;
+		font-size: .91rem
 	}
 	
 	main {
-		max-width: 850px;
-		margin: -18px auto 0;
-		padding: 0 16px 35px;
-		position: relative
+		padding: 25px 0 32px
 	}
 	
-	.toolbar {
-		background: #fff;
-		padding: 16px 18px;
-		border-radius: 18px;
-		box-shadow: 0 6px 24px #123b3614;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		gap: 12px;
-		margin-bottom: 22px
+	h2 {
+		font-size: 1.07rem;
+		margin: 0 0 15px
 	}
 	
-	.toolbar strong {
-		font-size: .96rem
-	}
-	
-	.count {
-		background: #e5f5f2;
-		color: var(--dark);
-		padding: 7px 11px;
-		border-radius: 30px;
-		font-size: .78rem;
-		font-weight: 800
-	}
-	
-	.grid {
+	.list {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
 		gap: 14px
 	}
 	
 	.app {
 		background: white;
-		border: 1px solid #e3eeeb;
-		border-radius: 22px;
-		padding: 20px 16px;
-		box-shadow: 0 5px 20px #123b3609;
+		border: 1px solid var(--border);
+		border-radius: 19px;
+		padding: 18px;
+		box-shadow: 0 3px 13px #153f3c0a
+	}
+	
+	.app-top {
 		display: flex;
-		flex-direction: column;
-		min-width: 0;
-		transition: transform .2s, box-shadow .2s
+		align-items: flex-start;
+		gap: 13px
 	}
 	
-	.app:hover {
-		transform: translateY(-3px);
-		box-shadow: 0 10px 24px #123b3617
-	}
-	
-	.symbol {
-		width: 56px;
-		height: 56px;
-		border-radius: 18px;
-		background: #e6f6f3;
+	.app-icon {
+		width: 54px;
+		height: 54px;
+		flex: none;
+		border-radius: 16px;
 		display: grid;
 		place-items: center;
-		font-size: 29px;
-		margin-bottom: 14px
+		background: #e4f5f2;
+		color: var(--primary)
 	}
 	
-	.app h2 {
-		font-size: 1.08rem;
-		margin: 0 0 9px
+	.app-icon svg {
+		width: 29px;
+		height: 29px;
+		stroke: currentColor;
+		stroke-width: 1.9;
+		fill: none;
+		stroke-linecap: round;
+		stroke-linejoin: round
+	}
+	
+	.app h3 {
+		font-size: 1.07rem;
+		margin: 1px 0 5px
 	}
 	
 	.app p {
-		font-size: .88rem;
-		line-height: 1.55;
+		margin: 0;
 		color: var(--muted);
-		margin: 0 0 18px;
-		flex: 1
+		line-height: 1.5;
+		font-size: .91rem
 	}
 	
-	.button {
-		background: var(--brand);
-		color: white;
-		border: 0;
+	.download {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		gap: 9px;
+		margin-top: 17px;
+		padding: 13px 16px;
+		min-height: 47px;
 		border-radius: 12px;
-		text-align: center;
-		padding: 13px 10px;
-		font-size: .9rem;
-		font-weight: 750;
+		background: var(--primary);
+		color: white;
 		text-decoration: none;
-		cursor: pointer;
-		display: block;
-		transition: background .15s
+		font-weight: 700;
+		font-size: .95rem;
+		transition: background .15s, transform .15s
 	}
 	
-	.button:hover {
-		background: var(--dark)
+	.download:hover {
+		background: var(--deep)
 	}
 	
-	.button:focus-visible {
-		outline: 3px solid #f1bd47;
+	.download:active {
+		transform: scale(.99)
+	}
+	
+	.download:focus-visible {
+		outline: 3px solid #ffc45b;
 		outline-offset: 3px
 	}
 	
-	.note {
-		font-size: .82rem;
-		color: var(--muted);
-		line-height: 1.6;
-		background: #e8f3f1;
+	.download svg {
+		width: 19px;
+		height: 19px;
+		stroke: currentColor;
+		stroke-width: 2;
+		fill: none;
+		stroke-linecap: round;
+		stroke-linejoin: round
+	}
+	
+	.notice {
+		margin-top: 20px;
+		padding: 15px 17px;
+		border: 1px solid #d5e6e3;
+		background: #e9f5f3;
 		border-radius: 14px;
-		padding: 14px 16px;
-		margin-top: 20px
+		color: #315a56;
+		font-size: .88rem;
+		line-height: 1.55
+	}
+	
+	.notice strong {
+		color: #164f49
 	}
 	
 	footer {
 		text-align: center;
 		color: var(--muted);
 		font-size: .8rem;
-		padding: 0 16px 25px
+		padding: 0 0 calc(24px + env(safe-area-inset-bottom))
 	}
 	
-	@media(min-width:720px) {
-		.grid {
-			grid-template-columns: repeat(3, minmax(0, 1fr))
+	@media(min-width:650px) {
+		header {
+			padding-bottom: 38px
 		}
-		.app {
-			padding: 22px
-		}
-	}
-	
-	@media(max-width:350px) {
-		.grid {
-			grid-template-columns: 1fr
+		main {
+			padding-top: 32px
 		}
 	}
 	
 	@media(prefers-reduced-motion:reduce) {
-		*,
-		*:before,
-		*:after {
-			transition: none!important;
-			scroll-behavior: auto!important
+		* {
+			transition: none!important
 		}
 	}
 	</style>
@@ -210,39 +210,86 @@
 
 <body>
 	<header>
-		<div class="head">
-			<div class="eyebrow">Central de aplicativos</div>
-			<h1>Meus Apps</h1>
-			<p>Aplicativos úteis para facilitar sua rotina. Escolha o que precisa e toque em baixar.</p>
+		<div class="wrap">
+			<div class="brand" aria-hidden="true">▦</div>
+			<div>
+				<h1>Meus Apps</h1>
+				<p>Aplicativos úteis para facilitar seu dia a dia</p>
+			</div>
 		</div>
 	</header>
-	<main>
-		<div class="toolbar"><strong>Explore os aplicativos</strong><span class="count">5 disponíveis</span></div>
-		<section class="grid" aria-label="Lista de aplicativos">
-			<article class="app">
-				<div class="symbol" aria-hidden="true">📅</div>
-				<h2>Cálculo de Folgas</h2>
-				<p>Organize sua escala de trabalho e consulte seus dias de folga de forma prática, com mais facilidade para planejar compromissos.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1v-leaRBz8o-AZ3pUGtyiPJuCy4eAIcqk" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
-			<article class="app">
-				<div class="symbol" aria-hidden="true">🎙️</div>
-				<h2>Agenda por Voz</h2>
-				<p>Registre e organize lembretes e compromissos usando a voz, tornando sua agenda mais rápida e conveniente no dia a dia.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1BeA2YKanKCRleKPtAfDSpJk7p1jJlo3H" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
-			<article class="app">
-				<div class="symbol" aria-hidden="true">📄</div>
-				<h2>Scanner de Documentos</h2>
-				<p>Digitalize documentos usando a câmera do celular e tenha seus arquivos em formato digital para guardar ou compartilhar.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=16Q0AD57oLiLMOQ1Bb5zJVfxT2rmYzhEB" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
-			<article class="app">
-				<div class="symbol" aria-hidden="true">💻</div>
-				<h2>Celular e PC Conectados</h2>
-				<p>Facilite a integração entre smartphone e computador, com mais praticidade para acessar recursos e trabalhar entre dispositivos.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=17b6E_DgKmEbnSghKXsEHDhwcYsnNtQea" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
-			<article class="app">
-				<div class="symbol" aria-hidden="true">📁</div>
-				<h2>Explorador de Arquivos</h2>
-				<p>Navegue pelos arquivos do celular, localize imagens e documentos e compartilhe conteúdos com mais facilidade.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1eOdnKRz8RseUx2YuVbeDR5boEp5IRPzD" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
-		</section>
-		<div class="note"><strong>Como instalar:</strong> após baixar o APK, abra o arquivo em Downloads e confirme a instalação no Android. Dependendo das configurações, será necessário permitir a instalação de aplicativos desta fonte. O Google Drive poderá solicitar uma confirmação antes de liberar o arquivo.</div>
+	<main class="wrap">
+		<h2>Aplicativos disponíveis</h2>
+		<section class="list" id="apps" aria-label="Lista de aplicativos"></section>
+		<div class="notice"><strong>Como instalar:</strong> toque em “Baixar APK”, aguarde o download e abra o arquivo no seu Android. O sistema poderá pedir autorização para instalar aplicativos dessa origem. O Google Drive também poderá solicitar uma confirmação adicional de segurança antes de liberar o download.</div>
 	</main>
-	<footer>Meus Apps • Central de downloads</footer>
+	<footer>Meus Apps · Catálogo de aplicativos</footer>
+	<script>
+	'use strict';
+	// Para eliminar a confirmação do Google Drive, hospede os APKs em um servidor
+	// com link direto e substitua somente o campo url de cada aplicativo.
+	const apps = [{
+		name: 'Calculadora de Folgas',
+		description: 'Organize sua escala de trabalho, calcule os próximos dias de folga e planeje seus compromissos com mais facilidade.',
+		icon: 'calendar',
+		url: 'https://drive.google.com/uc?export=download&id=1v-leaRBz8o-AZ3pUGtyiPJuCy4eAIcqk'
+	}, {
+		name: 'Agenda por Voz',
+		description: 'Registre lembretes e compromissos usando a voz. Uma maneira prática de organizar sua rotina sem precisar digitar tudo.',
+		icon: 'mic',
+		url: 'https://drive.google.com/uc?export=download&id=1BeA2YKanKCRleKPtAfDSpJk7p1jJlo3H'
+	}, {
+		name: 'Scanner de Documentos',
+		description: 'Digitalize documentos com a câmera do celular e mantenha seus arquivos organizados para consultar e compartilhar.',
+		icon: 'scan',
+		url: 'https://drive.google.com/uc?export=download&id=16Q0AD57oLiLMOQ1Bb5zJVfxT2rmYzhEB'
+	}, {
+		name: 'Conexão Celular e PC',
+		description: 'Facilite a conexão entre seu smartphone e computador para acessar recursos e compartilhar informações entre dispositivos.',
+		icon: 'devices',
+		url: 'https://drive.google.com/uc?export=download&id=17b6E_DgKmEbnSghKXsEHDhwcYsnNtQea'
+	}, {
+		name: 'Explorador de Arquivos',
+		description: 'Navegue pelas pastas do celular, encontre fotos e documentos, abra arquivos e compartilhe conteúdos com praticidade.',
+		icon: 'folder',
+		url: 'https://drive.google.com/uc?export=download&id=1eOdnKRz8RseUx2YuVbeDR5boEp5IRPzD'
+	}];
+	const icons = {
+		calendar: '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M7 3v4M17 3v4M3 10h18M8 15l2 2 5-5"/>',
+		mic: '<rect x="9" y="2" width="6" height="13" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 17v5M8 22h8"/>',
+		scan: '<path d="M8 3H5a2 2 0 0 0-2 2v3M16 3h3a2 2 0 0 1 2 2v3M3 16v3a2 2 0 0 0 2 2h3M21 16v3a2 2 0 0 1-2 2h-3M6 12h12M8 8h8M8 16h8"/>',
+		devices: '<rect x="2" y="4" width="14" height="12" rx="2"/><path d="M5 20h8M9 16v4"/><rect x="17" y="8" width="5" height="12" rx="1"/>',
+		folder: '<path d="M3 7a2 2 0 0 1 2-2h5l2 2h7a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>'
+	};
+	const downloadIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></svg>';
+	const list = document.getElementById('apps');
+	for(const app of apps) {
+		const article = document.createElement('article');
+		article.className = 'app';
+		const top = document.createElement('div');
+		top.className = 'app-top';
+		const icon = document.createElement('div');
+		icon.className = 'app-icon';
+		icon.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true">' + icons[app.icon] + '</svg>';
+		const info = document.createElement('div');
+		const h = document.createElement('h3');
+		h.textContent = app.name;
+		const p = document.createElement('p');
+		p.textContent = app.description;
+		info.append(h, p);
+		top.append(icon, info);
+		const a = document.createElement('a');
+		a.className = 'download';
+		a.href = app.url;
+		a.rel = 'noopener';
+		a.innerHTML = downloadIcon + ' Baixar APK';
+		a.setAttribute('aria-label', 'Baixar APK: ' + app.name);
+		// Não usar target=_blank: evita bloqueio de pop-up em WebViews.
+		// Não usar atributo download: URLs do Drive são de outra origem e podem exigir confirmação.
+		article.append(top, a);
+		list.append(article);
+	}
+	</script>
 </body>
 
 </html>
