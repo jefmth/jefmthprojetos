@@ -1,96 +1,65 @@
-<!DOCTYPE html>
-<html lang="pt-br">
+<!doctype html>
+<html lang="pt-BR">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Folgas107 – Atualizar</title>
-<style>
-:root {
-  --bg: #008B8B;
-  --bg-2: #006b6b;
-  --ink: #ffffff;
-  --accent: #ffd166;
-  --dark: #04302f;
-}
-* { box-sizing: border-box; }
-html, body { height: 100%; }
-body {
-  margin: 0;
-  display: grid;
-  place-items: center;
-  padding: env(safe-area-inset-top, 0) 20px env(safe-area-inset-bottom, 0);
-  background: radial-gradient(120% 120% at 50% 0%, var(--bg) 0%, var(--bg-2) 100%);
-  color: var(--ink);
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  text-align: center;
-}
-main { width: min(100%, 360px); display: grid; gap: 28px; justify-items: center; }
-#logo { max-width: 160px; height: auto; display: block; }
-h1 { margin: 0; font-size: 1.5rem; font-weight: 700; letter-spacing: .01em; }
-p.sub { margin: 6px 0 0; opacity: .85; font-size: .95rem; }
-
-@property --ang { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
-
-.btn {
-  appearance: none; cursor: pointer; width: 100%;
-  font: inherit; font-weight: 700; font-size: 1.1rem; color: #fff;
-  padding: 16px 24px; border-radius: 16px; position: relative; overflow: hidden;
-  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  -webkit-tap-highlight-color: transparent;
-  isolation: isolate;
-  border: 3px solid transparent;
-  background-image:
-    linear-gradient(var(--dark), var(--dark)),
-    conic-gradient(from var(--ang), #ffd166, #06d6a0, #4cc9f0, #ffd166);
-  background-origin: border-box;
-  background-clip: padding-box, border-box;
-  animation: girar 3s linear infinite;
-  transition: transform .15s ease;
-}
-.btn:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
-.btn:active { transform: scale(.97); }
-.btn svg { width: 22px; height: 22px; flex: none; animation: girar-icone 2.2s cubic-bezier(.6,0,.3,1) infinite; }
-@keyframes girar { to { --ang: 360deg; } }
-@keyframes girar-icone { to { transform: rotate(360deg); } }
-
-#status { min-height: 1.4em; font-size: .95rem; }
-#status a { color: var(--accent); font-weight: 700; }
-
-@media (hover: hover) { .btn:hover { transform: translateY(-2px); } }
-@media (prefers-reduced-motion: reduce) {
-  .btn, .btn svg { animation: none !important; }
-}
-</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+    <meta name="theme-color" content="#6d4cce">
+    <title>Meus Apps — Vitrine de aplicativos</title>
+    <style>
+        *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f7f4ff;color:#1b2938}header{background:#6d4cce;color:white;padding:calc(26px + env(safe-area-inset-top)) 22px 30px;border-radius:0 0 28px 28px}.wrap{max-width:780px;margin:auto}h1{margin:0;font-size:29px}header p{margin:8px 0 0;opacity:.9}main{padding:22px 16px 35px}.intro{font-weight:750;margin:0 0 16px;font-size:19px}.apps{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}.app{background:white;border:1px solid #e5e9ef;border-radius:20px;padding:18px;box-shadow:0 5px 18px #2030400c;display:flex;align-items:center;gap:14px;flex-direction:column;text-align:center;}.icon{width:54px;height:54px;flex-shrink:0;border-radius:16px;display:grid;place-items:center;font-size:27px;background:#e5f1ff}.details{flex:1;min-width:0}.name{font-size:17px;font-weight:750;margin:0 0 5px}.desc{font-size:13px;color:#657182;margin:0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-size:14px;font-weight:750;cursor:pointer;background:#6d4cce;color:white;min-height:44px}button:disabled{background:#e8ebef;color:#7a8591;cursor:not-allowed}button:focus-visible{outline:3px solid #f2b84b;outline-offset:3px}.status{margin-top:16px;min-height:24px;font-size:14px;color:#334155}.status a{color:#6d4cce;font-weight:700}footer{text-align:center;padding:10px 16px 30px;color:#7a8591;font-size:12px}@media(max-width:380px){.app{flex-wrap:wrap}.app button{width:100%}}.app button{width:100%}.app{padding:18px 10px}.details{width:100%}.icon{width:66px;height:66px;font-size:32px}.desc{min-height:34px}@media(min-width:600px){.apps{grid-template-columns:repeat(4,minmax(0,1fr))}}
+    </style>
 </head>
+
 <body>
-<main>
-  <div>
-    <h1>Nova versão disponível</h1>
-    <p class="sub">Toque no botão para baixar o Folgas107.apk</p>
-  </div>
-
-  <button class="btn" type="button" id="atualizar">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.5-5.8M20 4v5h-5"/></svg>
-    Atualizar
-  </button>
-
-  <div id="status" role="status" aria-live="polite"></div>
-</main>
-
-<script>
-const APK_URL = 'https://jefmth2.netlify.app/apk/Folgas107.apk';
-const status = document.getElementById('status');
-
-document.getElementById('atualizar').addEventListener('click', () => {
-  const a = document.createElement('a');
-  a.href = APK_URL;
-  a.download = 'Folgas107.apk';
-  a.rel = 'noopener';
-  document.body.append(a);
-  a.click();
-  a.remove();
-  status.innerHTML = 'Download iniciado. Se não começar, <a href="' + APK_URL + '" download="Folgas107.apk">toque aqui</a>.';
-});
-</script>
+    <header>
+        <div class="wrap">
+            <h1>Meus Apps</h1>
+            <p>Seus aplicativos em um só lugar.</p>
+        </div>
+    </header>
+    <main class="wrap">
+        <p class="intro">Aplicativos disponíveis</p>
+        <section class="apps" aria-label="Catálogo de aplicativos">
+            <article class="app">
+                <div class="icon" aria-hidden="true">📅</div>
+                <div class="details">
+                    <h2 class="name">Folgas107</h2>
+                    <p class="desc">Organize e consulte suas folgas.</p>
+                </div>
+                <button type="button" id="download">Baixar APK</button>
+            </article>
+            <article class="app">
+                <div class="icon" aria-hidden="true">📁</div>
+                <div class="details">
+                    <h2 class="name">Aplicativo 2</h2>
+                    <p class="desc">Novidade em preparação.</p>
+                </div>
+                <button type="button" disabled aria-label="Aplicativo 2 em breve">Em breve</button>
+            </article>
+            <article class="app">
+                <div class="icon" aria-hidden="true">🛠️</div>
+                <div class="details">
+                    <h2 class="name">Aplicativo 3</h2>
+                    <p class="desc">Novidade em preparação.</p>
+                </div>
+                <button type="button" disabled aria-label="Aplicativo 3 em breve">Em breve</button>
+            </article>
+            <article class="app">
+                <div class="icon" aria-hidden="true">📱</div>
+                <div class="details">
+                    <h2 class="name">Aplicativo 4</h2>
+                    <p class="desc">Novidade em preparação.</p>
+                </div>
+                <button type="button" disabled aria-label="Aplicativo 4 em breve">Em breve</button>
+            </article>
+        </section>
+        <p class="status" id="status" role="status" aria-live="polite"></p>
+    </main>
+    <footer>Meus Apps • Novidades em breve</footer>
+    <script>
+        const APK_URL='https://jefmth2.netlify.app/apk/Folgas107.apk';document.getElementById('download').addEventListener('click',()=>{const a=document.createElement('a');a.href=APK_URL;a.download='Folgas107.apk';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();const status=document.getElementById('status');status.replaceChildren('Se o download não iniciar, ');const link=document.createElement('a');link.href=APK_URL;link.download='Folgas107.apk';link.textContent='toque aqui';status.append(link,'.');});
+    </script>
 </body>
+
 </html>
