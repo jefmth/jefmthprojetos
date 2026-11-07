@@ -2,64 +2,247 @@
 <html lang="pt-BR">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-    <meta name="theme-color" content="#6d4cce">
-    <title>Meus Apps — Vitrine de aplicativos</title>
-    <style>
-        *{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,'Segoe UI',sans-serif;background:#f7f4ff;color:#1b2938}header{background:#6d4cce;color:white;padding:calc(26px + env(safe-area-inset-top)) 22px 30px;border-radius:0 0 28px 28px}.wrap{max-width:780px;margin:auto}h1{margin:0;font-size:29px}header p{margin:8px 0 0;opacity:.9}main{padding:22px 16px 35px}.intro{font-weight:750;margin:0 0 16px;font-size:19px}.apps{display:grid;gap:14px;grid-template-columns:repeat(2,minmax(0,1fr))}.app{background:white;border:1px solid #e5e9ef;border-radius:20px;padding:18px;box-shadow:0 5px 18px #2030400c;display:flex;align-items:center;gap:14px;flex-direction:column;text-align:center;}.icon{width:54px;height:54px;flex-shrink:0;border-radius:16px;display:grid;place-items:center;font-size:27px;background:#e5f1ff}.details{flex:1;min-width:0}.name{font-size:17px;font-weight:750;margin:0 0 5px}.desc{font-size:13px;color:#657182;margin:0}button{border:0;border-radius:12px;padding:12px 16px;font:inherit;font-size:14px;font-weight:750;cursor:pointer;background:#6d4cce;color:white;min-height:44px}button:disabled{background:#e8ebef;color:#7a8591;cursor:not-allowed}button:focus-visible{outline:3px solid #f2b84b;outline-offset:3px}.status{margin-top:16px;min-height:24px;font-size:14px;color:#334155}.status a{color:#6d4cce;font-weight:700}footer{text-align:center;padding:10px 16px 30px;color:#7a8591;font-size:12px}@media(max-width:380px){.app{flex-wrap:wrap}.app button{width:100%}}.app button{width:100%}.app{padding:18px 10px}.details{width:100%}.icon{width:66px;height:66px;font-size:32px}.desc{min-height:34px}@media(min-width:600px){.apps{grid-template-columns:repeat(4,minmax(0,1fr))}}
-    </style>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+	<meta name="theme-color" content="#008F83">
+	<title>Meus Apps | Central de Downloads</title>
+	<style>
+	:root {
+		--brand: #008F83;
+		--dark: #006e65;
+		--bg: #f2f8f7;
+		--ink: #17312e;
+		--muted: #637b78
+	}
+	
+	* {
+		box-sizing: border-box
+	}
+	
+	html {
+		scroll-behavior: smooth
+	}
+	
+	body {
+		margin: 0;
+		background: var(--bg);
+		font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+		color: var(--ink)
+	}
+	
+	header {
+		background: linear-gradient(135deg, #008F83, #006c65);
+		color: white;
+		padding: calc(28px + env(safe-area-inset-top)) 20px 38px;
+		border-radius: 0 0 28px 28px;
+		box-shadow: 0 8px 24px #006e6520
+	}
+	
+	.head {
+		max-width: 850px;
+		margin: auto
+	}
+	
+	.eyebrow {
+		font-size: .82rem;
+		letter-spacing: .13em;
+		text-transform: uppercase;
+		opacity: .85;
+		font-weight: 700
+	}
+	
+	h1 {
+		font-size: 2rem;
+		margin: 10px 0 6px
+	}
+	
+	header p {
+		margin: 0;
+		opacity: .9;
+		line-height: 1.5
+	}
+	
+	main {
+		max-width: 850px;
+		margin: -18px auto 0;
+		padding: 0 16px 35px;
+		position: relative
+	}
+	
+	.toolbar {
+		background: #fff;
+		padding: 16px 18px;
+		border-radius: 18px;
+		box-shadow: 0 6px 24px #123b3614;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 12px;
+		margin-bottom: 22px
+	}
+	
+	.toolbar strong {
+		font-size: .96rem
+	}
+	
+	.count {
+		background: #e5f5f2;
+		color: var(--dark);
+		padding: 7px 11px;
+		border-radius: 30px;
+		font-size: .78rem;
+		font-weight: 800
+	}
+	
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 14px
+	}
+	
+	.app {
+		background: white;
+		border: 1px solid #e3eeeb;
+		border-radius: 22px;
+		padding: 20px 16px;
+		box-shadow: 0 5px 20px #123b3609;
+		display: flex;
+		flex-direction: column;
+		min-width: 0;
+		transition: transform .2s, box-shadow .2s
+	}
+	
+	.app:hover {
+		transform: translateY(-3px);
+		box-shadow: 0 10px 24px #123b3617
+	}
+	
+	.symbol {
+		width: 56px;
+		height: 56px;
+		border-radius: 18px;
+		background: #e6f6f3;
+		display: grid;
+		place-items: center;
+		font-size: 29px;
+		margin-bottom: 14px
+	}
+	
+	.app h2 {
+		font-size: 1.08rem;
+		margin: 0 0 9px
+	}
+	
+	.app p {
+		font-size: .88rem;
+		line-height: 1.55;
+		color: var(--muted);
+		margin: 0 0 18px;
+		flex: 1
+	}
+	
+	.button {
+		background: var(--brand);
+		color: white;
+		border: 0;
+		border-radius: 12px;
+		text-align: center;
+		padding: 13px 10px;
+		font-size: .9rem;
+		font-weight: 750;
+		text-decoration: none;
+		cursor: pointer;
+		display: block;
+		transition: background .15s
+	}
+	
+	.button:hover {
+		background: var(--dark)
+	}
+	
+	.button:focus-visible {
+		outline: 3px solid #f1bd47;
+		outline-offset: 3px
+	}
+	
+	.note {
+		font-size: .82rem;
+		color: var(--muted);
+		line-height: 1.6;
+		background: #e8f3f1;
+		border-radius: 14px;
+		padding: 14px 16px;
+		margin-top: 20px
+	}
+	
+	footer {
+		text-align: center;
+		color: var(--muted);
+		font-size: .8rem;
+		padding: 0 16px 25px
+	}
+	
+	@media(min-width:720px) {
+		.grid {
+			grid-template-columns: repeat(3, minmax(0, 1fr))
+		}
+		.app {
+			padding: 22px
+		}
+	}
+	
+	@media(max-width:350px) {
+		.grid {
+			grid-template-columns: 1fr
+		}
+	}
+	
+	@media(prefers-reduced-motion:reduce) {
+		*,
+		*:before,
+		*:after {
+			transition: none!important;
+			scroll-behavior: auto!important
+		}
+	}
+	</style>
 </head>
 
 <body>
-    <header>
-        <div class="wrap">
-            <h1>Meus Apps</h1>
-            <p>Seus aplicativos em um só lugar.</p>
-        </div>
-    </header>
-    <main class="wrap">
-        <p class="intro">Aplicativos disponíveis</p>
-        <section class="apps" aria-label="Catálogo de aplicativos">
-            <article class="app">
-                <div class="icon" aria-hidden="true">📅</div>
-                <div class="details">
-                    <h2 class="name">Folgas107</h2>
-                    <p class="desc">Organize e consulte suas folgas.</p>
-                </div>
-                <button type="button" id="download">Baixar APK</button>
-            </article>
-            <article class="app">
-                <div class="icon" aria-hidden="true">📁</div>
-                <div class="details">
-                    <h2 class="name">Aplicativo 2</h2>
-                    <p class="desc">Novidade em preparação.</p>
-                </div>
-                <button type="button" disabled aria-label="Aplicativo 2 em breve">Em breve</button>
-            </article>
-            <article class="app">
-                <div class="icon" aria-hidden="true">🛠️</div>
-                <div class="details">
-                    <h2 class="name">Aplicativo 3</h2>
-                    <p class="desc">Novidade em preparação.</p>
-                </div>
-                <button type="button" disabled aria-label="Aplicativo 3 em breve">Em breve</button>
-            </article>
-            <article class="app">
-                <div class="icon" aria-hidden="true">📱</div>
-                <div class="details">
-                    <h2 class="name">Aplicativo 4</h2>
-                    <p class="desc">Novidade em preparação.</p>
-                </div>
-                <button type="button" disabled aria-label="Aplicativo 4 em breve">Em breve</button>
-            </article>
-        </section>
-        <p class="status" id="status" role="status" aria-live="polite"></p>
-    </main>
-    <footer>Meus Apps • Novidades em breve</footer>
-    <script>
-        const APK_URL='https://jefmth2.netlify.app/apk/Folgas107.apk';document.getElementById('download').addEventListener('click',()=>{const a=document.createElement('a');a.href=APK_URL;a.download='Folgas107.apk';a.rel='noopener';document.body.appendChild(a);a.click();a.remove();const status=document.getElementById('status');status.replaceChildren('Se o download não iniciar, ');const link=document.createElement('a');link.href=APK_URL;link.download='Folgas107.apk';link.textContent='toque aqui';status.append(link,'.');});
-    </script>
+	<header>
+		<div class="head">
+			<div class="eyebrow">Central de aplicativos</div>
+			<h1>Meus Apps</h1>
+			<p>Aplicativos úteis para facilitar sua rotina. Escolha o que precisa e toque em baixar.</p>
+		</div>
+	</header>
+	<main>
+		<div class="toolbar"><strong>Explore os aplicativos</strong><span class="count">5 disponíveis</span></div>
+		<section class="grid" aria-label="Lista de aplicativos">
+			<article class="app">
+				<div class="symbol" aria-hidden="true">📅</div>
+				<h2>Cálculo de Folgas</h2>
+				<p>Organize sua escala de trabalho e consulte seus dias de folga de forma prática, com mais facilidade para planejar compromissos.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1v-leaRBz8o-AZ3pUGtyiPJuCy4eAIcqk" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
+			<article class="app">
+				<div class="symbol" aria-hidden="true">🎙️</div>
+				<h2>Agenda por Voz</h2>
+				<p>Registre e organize lembretes e compromissos usando a voz, tornando sua agenda mais rápida e conveniente no dia a dia.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1BeA2YKanKCRleKPtAfDSpJk7p1jJlo3H" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
+			<article class="app">
+				<div class="symbol" aria-hidden="true">📄</div>
+				<h2>Scanner de Documentos</h2>
+				<p>Digitalize documentos usando a câmera do celular e tenha seus arquivos em formato digital para guardar ou compartilhar.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=16Q0AD57oLiLMOQ1Bb5zJVfxT2rmYzhEB" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
+			<article class="app">
+				<div class="symbol" aria-hidden="true">💻</div>
+				<h2>Celular e PC Conectados</h2>
+				<p>Facilite a integração entre smartphone e computador, com mais praticidade para acessar recursos e trabalhar entre dispositivos.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=17b6E_DgKmEbnSghKXsEHDhwcYsnNtQea" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
+			<article class="app">
+				<div class="symbol" aria-hidden="true">📁</div>
+				<h2>Explorador de Arquivos</h2>
+				<p>Navegue pelos arquivos do celular, localize imagens e documentos e compartilhe conteúdos com mais facilidade.</p><a class="button" href="https://drive.google.com/uc?export=download&amp;id=1eOdnKRz8RseUx2YuVbeDR5boEp5IRPzD" target="_blank" rel="noopener noreferrer" download>⬇ Baixar aplicativo</a></article>
+		</section>
+		<div class="note"><strong>Como instalar:</strong> após baixar o APK, abra o arquivo em Downloads e confirme a instalação no Android. Dependendo das configurações, será necessário permitir a instalação de aplicativos desta fonte. O Google Drive poderá solicitar uma confirmação antes de liberar o arquivo.</div>
+	</main>
+	<footer>Meus Apps • Central de downloads</footer>
 </body>
 
 </html>
